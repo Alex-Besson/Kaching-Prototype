@@ -52,12 +52,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
         
-        if shouldShowSearchResults {
-            cell.textLabel?.text = filteredArray[indexPath.row]
-        } else {
-            cell.textLabel?.text = dataArray[indexPath.row]
-        }
-
+//        if shouldShowSearchResults {
+//            cell.textLabel?.text = filteredArray[indexPath.row]
+//        } else {
+//            cell.textLabel?.text = dataArray[indexPath.row]
+//        }
+//
         
         return cell
     }
