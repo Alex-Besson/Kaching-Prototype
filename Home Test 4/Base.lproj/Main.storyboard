@@ -172,7 +172,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="twd-GU-NGW">
-                                                    <rect key="frame" x="481" y="17" width="100" height="10"/>
+                                                    <rect key="frame" x="481" y="41" width="100" height="10"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="N1o-7T-FCF"/>
@@ -188,7 +188,7 @@
                                                 <constraint firstItem="4xq-gO-JPi" firstAttribute="leading" secondItem="2yB-RQ-GfA" secondAttribute="trailing" constant="17" id="W95-cY-7Qu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4xq-gO-JPi" secondAttribute="bottom" constant="3" id="cpG-G0-qut"/>
                                                 <constraint firstItem="twd-GU-NGW" firstAttribute="leading" secondItem="4xq-gO-JPi" secondAttribute="trailing" priority="910" constant="19" id="fSo-8P-8ed"/>
-                                                <constraint firstItem="twd-GU-NGW" firstAttribute="top" secondItem="sR6-wN-dvG" secondAttribute="topMargin" constant="9" id="lCe-F7-fgo"/>
+                                                <constraint firstItem="twd-GU-NGW" firstAttribute="top" secondItem="sR6-wN-dvG" secondAttribute="topMargin" constant="33" id="lCe-F7-fgo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
