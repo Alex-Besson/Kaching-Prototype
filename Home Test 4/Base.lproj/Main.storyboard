@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVc-8V-ZNY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -124,7 +125,7 @@
                                                                 <constraint firstAttribute="width" constant="108" id="poc-r5-xAx"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPm-aT-Ybv">
@@ -135,7 +136,7 @@
                                                                 <constraint firstAttribute="width" constant="108" id="8vi-dJ-xYA"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retail Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNC-2G-MbO">
@@ -146,7 +147,7 @@
                                                                 <constraint firstAttribute="width" constant="108" id="zm3-Ue-Whl"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -276,7 +277,7 @@
                                             <constraint firstAttribute="width" constant="111.5" id="F2f-cw-Yam"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="172" y="120" width="112" height="26"/>
@@ -314,7 +315,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="p8U-jo-WqC"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="198" y="80" width="112" height="30"/>
@@ -335,7 +336,7 @@
 - 4-inch Retina display with a resolution of 1136 x 640 pixels  
 - Packed with great features!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -362,7 +363,7 @@
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="19" y="230" width="361" height="10"/>
+                                            <rect key="frame" x="21" y="230.5" width="359" height="10"/>
                                             <mask key="constraints">
                                                 <include reference="uZB-uf-BAF"/>
                                             </mask>
@@ -439,12 +440,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="To2-go-C56"/>
-                                        <exclude reference="Asq-NG-YgR"/>
-                                        <exclude reference="VtJ-Nk-yZh"/>
-                                        <exclude reference="uQ1-yj-DLX"/>
                                         <exclude reference="Pdk-fA-BmP"/>
                                         <exclude reference="kuN-q2-T9W"/>
                                         <exclude reference="qZe-Tg-rBl"/>
+                                        <exclude reference="Asq-NG-YgR"/>
+                                        <exclude reference="VtJ-Nk-yZh"/>
+                                        <exclude reference="uQ1-yj-DLX"/>
                                         <exclude reference="Lxj-BA-16T"/>
                                         <exclude reference="O9k-4N-VHT"/>
                                         <exclude reference="4QF-HU-TFr"/>
@@ -468,12 +469,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="To2-go-C56"/>
-                                        <include reference="Asq-NG-YgR"/>
-                                        <include reference="VtJ-Nk-yZh"/>
-                                        <include reference="uQ1-yj-DLX"/>
                                         <include reference="Pdk-fA-BmP"/>
                                         <include reference="kuN-q2-T9W"/>
                                         <include reference="qZe-Tg-rBl"/>
+                                        <include reference="Asq-NG-YgR"/>
+                                        <include reference="VtJ-Nk-yZh"/>
+                                        <include reference="uQ1-yj-DLX"/>
                                         <include reference="O9k-4N-VHT"/>
                                         <include reference="cVa-T1-Fun"/>
                                         <include reference="svd-9F-IsG"/>
