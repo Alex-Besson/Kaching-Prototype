@@ -18,11 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("BurmTrwbikjoafdVpMjWWOJS7J6nj1YqP2N7LAmh", clientKey: "Hwdjjkx7jgcDfzzQHH8SOcbXzcaiWKF3OfjcTLTZ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
-<<<<<<< HEAD
-        
-=======
-    
->>>>>>> AddingonTableandDetailView
+
         // Override point for customization after application launch.
         return true
     }
