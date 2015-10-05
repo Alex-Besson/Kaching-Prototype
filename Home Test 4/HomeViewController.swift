@@ -19,6 +19,7 @@ var shouldShowSearchResults = false
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
+    var Pbar = [Float]()
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
@@ -33,6 +34,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         customSearchController.customDelegate = self
     }
 
+    func CalculateProgressBar (currentCommit:Float,currentThreshold:Float) -> Float{
+        
+        return (currentCommit/currentThreshold)
+        
+        
+    }
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +54,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.products = products!
             
             
-            //            print(self.products[0].itemName)
+           
             
             self.tblSearchResults.reloadData()
            
@@ -76,8 +88,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
         cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
-
         
+        
+        
+        
+       Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
+
+        cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
        
 //        if productControllers.itemImages.count > 0 {
 //        cell.ProductImage.image = productControllers.itemImages[0]
@@ -133,9 +150,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
+        if segue.identifier == "detailView" {
+        if let  detailViewController = segue.destinationViewController as? ProductDetailViewController{
         
-        
-        
+        if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
+            detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
+            detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
+            detailViewController.itemProgressBar = self.Pbar[indexPath.row]
+          
+             
+            
+            }
+        }
+        }
     }
     
 }
