@@ -17,6 +17,8 @@ var shouldShowSearchResults = false
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
+    var products = [Parse_ProductModel]()
+    let productControllers = ProductController()
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
@@ -34,25 +36,54 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        productControllers.fetchParseData { (products, error) -> Void in
+            
+            self.products = products!
+            
+            
+            //            print(self.products[0].itemName)
+            
+            self.tblSearchResults.reloadData()
+           
+            
+            
+        }
+
 
         // Do any additional setup after loading the view.
         configureCustomSearchController()
     }
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if shouldShowSearchResults {
-            return filteredArray.count
-        } else {
-            return dataArray.count
-        }
+//        if shouldShowSearchResults {
+//            return filteredArray.count
+//        } else {
+//            return dataArray.count
+//        }
+        return self.products.count
 
     }
     
     
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
+          
+        cell.Product_Name.text = self.products[indexPath.row].itemName
         
+        
+        
+        cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
+        cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
+
+        
+       
+//        if productControllers.itemImages.count > 0 {
+//        cell.ProductImage.image = productControllers.itemImages[0]
+//        } else {
+//            print("Image was not loaded")
+//        }
         
 //        if shouldShowSearchResults {
 //            cell.textLabel?.text = filteredArray[indexPath.row]
@@ -101,5 +132,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
+        
+    }
     
 }

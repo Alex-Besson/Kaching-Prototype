@@ -107,7 +107,7 @@
                                 <color key="separatorColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="126" id="lw0-N1-Fjj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="126" id="lw0-N1-Fjj" customClass="HomeViewTableViewCell" customModule="Home_Test_4" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49.5" width="600" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lw0-N1-Fjj" id="sR6-wN-dvG">
@@ -203,7 +203,12 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="bMI-rf-3Ta" kind="show" id="gnR-Yf-t5N"/>
+                                            <outlet property="ProductImage" destination="2yB-RQ-GfA" id="42d-It-ZNs"/>
+                                            <outlet property="Product_DiscountPrice" destination="XPm-aT-Ybv" id="6wm-CX-GvY"/>
+                                            <outlet property="Product_Name" destination="r07-1m-jdK" id="3hM-sf-mDr"/>
+                                            <outlet property="Product_ProgressBar" destination="twd-GU-NGW" id="qsw-49-1b5"/>
+                                            <outlet property="Product_RetailPrice" destination="lNC-2G-MbO" id="5oP-ca-1ab"/>
+                                            <segue destination="bMI-rf-3Ta" kind="show" identifier="detailView" id="gnR-Yf-t5N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -229,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="1468" y="1047"/>
         </scene>
-        <!--View Controller-->
+        <!--Product Detail View Controller-->
         <scene sceneID="wKc-oO-65V">
             <objects>
-                <viewController id="bMI-rf-3Ta" sceneMemberID="viewController">
+                <viewController id="bMI-rf-3Ta" customClass="ProductDetailViewController" customModule="Home_Test_4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VWt-Cu-nNt"/>
                         <viewControllerLayoutGuide type="bottom" id="z3H-EA-7Lk"/>

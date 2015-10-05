@@ -1,18 +1,15 @@
 //
-//  HamburgerViewController.swift
+//  ProductDetailViewViewController.swift
 //  Home Test 4
 //
-//  Created by Alexander Besson on 2015-10-01.
+//  Created by Miwand Najafe on 2015-10-05.
 //  Copyright © 2015 Alexander Besson. All rights reserved.
 //
 
 import UIKit
 
-class HamburgerViewController: UIViewController {
-    
-    
-    
-    
+class ProductDetailViewViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
