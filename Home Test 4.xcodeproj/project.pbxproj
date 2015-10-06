@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3ECBE051C0A2DA559698B708 /* libPods-Home Test 4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C068614D496F308342174AD1 /* libPods-Home Test 4.a */; };
+		E866C5101BC22C66008E4955 /* Ka_Ching_Parse.m in Sources */ = {isa = PBXBuildFile; fileRef = E866C50F1BC22C66008E4955 /* Ka_Ching_Parse.m */; settings = {ASSET_TAGS = (); }; };
+		E866C5121BC2312B008E4955 /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5111BC2312B008E4955 /* HomeViewTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E866C5141BC231DC008E4955 /* Parse_ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
+		E866C5161BC233FB008E4955 /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5151BC233FB008E4955 /* ProductController.swift */; settings = {ASSET_TAGS = (); }; };
+		E866C51A1BC24D92008E4955 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5191BC24D92008E4955 /* ProductDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA97BF4E1BBDCCC4002E8197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97BF4D1BBDCCC4002E8197 /* AppDelegate.swift */; };
 		FA97BF501BBDCCC4002E8197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97BF4F1BBDCCC4002E8197 /* ViewController.swift */; };
 		FA97BF531BBDCCC4002E8197 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA97BF511BBDCCC4002E8197 /* Main.storyboard */; };
@@ -46,6 +51,13 @@
 		37D8E42208F10C2A7C204498 /* Pods-Home Test 4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home Test 4.release.xcconfig"; path = "Pods/Target Support Files/Pods-Home Test 4/Pods-Home Test 4.release.xcconfig"; sourceTree = "<group>"; };
 		421B9A9F9E7A2EC09327A1E8 /* Pods-Home Test 4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home Test 4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Home Test 4/Pods-Home Test 4.debug.xcconfig"; sourceTree = "<group>"; };
 		C068614D496F308342174AD1 /* libPods-Home Test 4.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Home Test 4.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E866C50D1BC22C5B008E4955 /* Home Test 4-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Home Test 4-Bridging-Header.h"; sourceTree = "<group>"; };
+		E866C50E1BC22C66008E4955 /* Ka_Ching_Parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ka_Ching_Parse.h; sourceTree = "<group>"; };
+		E866C50F1BC22C66008E4955 /* Ka_Ching_Parse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ka_Ching_Parse.m; sourceTree = "<group>"; };
+		E866C5111BC2312B008E4955 /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
+		E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_ProductModel.swift; sourceTree = "<group>"; };
+		E866C5151BC233FB008E4955 /* ProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
+		E866C5191BC24D92008E4955 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		FA97BF4A1BBDCCC4002E8197 /* Home Test 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Test 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA97BF4D1BBDCCC4002E8197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA97BF4F1BBDCCC4002E8197 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,13 +152,20 @@
 				FA97BF4D1BBDCCC4002E8197 /* AppDelegate.swift */,
 				FA97BF4F1BBDCCC4002E8197 /* ViewController.swift */,
 				FA97BF7B1BBDCD83002E8197 /* HomeViewController.swift */,
+				E866C5111BC2312B008E4955 /* HomeViewTableViewCell.swift */,
+				E866C5191BC24D92008E4955 /* ProductDetailViewController.swift */,
 				FA97BF7D1BBDCDFB002E8197 /* HamburgerViewController.swift */,
+				E866C5151BC233FB008E4955 /* ProductController.swift */,
+				E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */,
+				E866C50E1BC22C66008E4955 /* Ka_Ching_Parse.h */,
+				E866C50F1BC22C66008E4955 /* Ka_Ching_Parse.m */,
 				FA97C0041BBE1CBC002E8197 /* Help/AboutUs */,
 				FA97BFFB1BBE12A0002E8197 /* SearchFeature */,
 				FA97BF7F1BBDD687002E8197 /* SignIn.jpg */,
 				FA97BF511BBDCCC4002E8197 /* Main.storyboard */,
 				FA97BF541BBDCCC4002E8197 /* Assets.xcassets */,
 				FA97BF561BBDCCC4002E8197 /* LaunchScreen.storyboard */,
+				E866C50D1BC22C5B008E4955 /* Home Test 4-Bridging-Header.h */,
 				FA97BF591BBDCCC4002E8197 /* Info.plist */,
 			);
 			path = "Home Test 4";
@@ -362,9 +381,14 @@
 				FA97BFFF1BBE1305002E8197 /* CustomSearchBar.swift in Sources */,
 				FA97C0031BBE1385002E8197 /* CustomSearchControllerDelegate.swift in Sources */,
 				FA97BF501BBDCCC4002E8197 /* ViewController.swift in Sources */,
+				E866C5161BC233FB008E4955 /* ProductController.swift in Sources */,
 				FA97BF4E1BBDCCC4002E8197 /* AppDelegate.swift in Sources */,
+				E866C5141BC231DC008E4955 /* Parse_ProductModel.swift in Sources */,
+				E866C51A1BC24D92008E4955 /* ProductDetailViewController.swift in Sources */,
+				E866C5121BC2312B008E4955 /* HomeViewTableViewCell.swift in Sources */,
 				FA97BF7C1BBDCD83002E8197 /* HomeViewController.swift in Sources */,
 				FA97C00A1BBE1D8B002E8197 /* Help&SupportController.swift in Sources */,
+				E866C5101BC22C66008E4955 /* Ka_Ching_Parse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
