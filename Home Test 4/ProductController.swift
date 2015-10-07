@@ -52,6 +52,14 @@ class ProductController {
                 guard let currentCommit = parseProduct.objectForKey("CurrentCommit") as? Float else {
                     return
                 }
+                
+                guard  let currentItemID = parseProduct.objectId else {
+                    return
+                }
+                    
+                
+                
+                
                 guard let itemImagePFFiles = parseProduct.objectForKey("ItemImage") as? PFFile else {
                     return
                 }
@@ -61,7 +69,7 @@ class ProductController {
                 let discountPriceString = String(format: "%.2f", discountPriceFloat)
                 let retailPriceString = String(format: "%.2f", retailPriceFloat)
                 //                self.products.append(product)
-                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit , threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString)]
+                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit , threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString,itemId:currentItemID)]
                 self.itemImagesPFFile += [itemImagePFFiles]
                 
             }

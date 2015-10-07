@@ -154,6 +154,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tblSearchResults.reloadData()
     }
     
+    // SEARCH DELEGATE FUNCTION
+    
     func didChangeSearchText(searchText: String) {
         filteredArray = dataArray.filter({ (product) -> Bool in
             let productText : NSString = product
@@ -179,10 +181,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
             detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
             detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
-            detailViewController.itemProgressBar = self.Pbar[indexPath.row]
             detailViewController.itemImage = self.myImages[indexPath.row]
-            
-            
+            detailViewController.currentItemCommit = self.products[indexPath.row].currentCommit
+            detailViewController.currentItemThreshold = self.products[indexPath.row].threshold
+            detailViewController.currentItemID = self.products[indexPath.row].itemId
             }
         }
         }

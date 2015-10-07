@@ -9,6 +9,18 @@
 import UIKit
 
 class ProductDetailViewController: UIViewController {
+    
+    
+    var itemDiscountPrice:String?
+    var itemRetailPrice:String?
+   
+    var itemImage:UIImage?
+    var currentItemCommit:Float?
+    var currentItemThreshold:Float?
+    let commitChanger = Threshold_Changer()
+    var currentItemID:String?
+    var itemCommitChanged:Float = 0.00
+    
     @IBOutlet weak var productDetailImage: UIImageView!
 
     @IBOutlet weak var ProductDetailPBar: UIProgressView!
@@ -16,17 +28,39 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var ProductRetailPrice: UILabel!
     @IBOutlet weak var ProductDiscountPrice: UILabel!
     
-    var itemDiscountPrice:String?
-    var itemRetailPrice:String?
-    var itemProgressBar:Float?
-    var itemImage:UIImage?
+    @IBAction func IAmIn(sender: AnyObject) {
+        
+          itemCommitChanged = currentItemCommit!
+        
+        itemCommitChanged++
+        
+        guard let itemID = currentItemID else {return}
+        
+      commitChanger.Change(itemID, change: itemCommitChanged)
+        print(currentItemCommit)
+    
+    }
+    
+    @IBAction func IAmOut(sender: AnyObject) {
+        
+        
+        
+        
+    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let itemProgressBar = itemCommitChanged/currentItemThreshold! as? Float else {
+            return
+        }
+        
         self.productDetailImage.image = itemImage
         self.ProductDiscountPrice.text = itemDiscountPrice
         self.ProductRetailPrice.text = itemRetailPrice
-        self.ProductDetailPBar.setProgress(itemProgressBar!, animated: true)
+        self.ProductDetailPBar.setProgress(itemProgressBar, animated: true)
+      self.loadView()
 
         // Do any additional setup after loading the view.
     }
