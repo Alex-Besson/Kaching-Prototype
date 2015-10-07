@@ -8,7 +8,7 @@
 
 import UIKit
 
-var dataArray = ["iPhone 6", "iPhone 6 Plus", "Crappy Samsung Phone", "Another Crappy Samsung Phone", "Vacuum Cleaner", "SONY 4K TV", "Samsung 4K TV", "iPad Pro", "Silicon Valley: Complete First Season", "Lamp", "La-Z Boy Chair", "1977 Gibson Les Paul Guitar", "Fender Jazz Bass", "The Big Bang Theory: Complete Series"]
+var dataArray = [String]()
 
 var filteredArray = [String]()
 
@@ -70,14 +70,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         productControllers.fetchParseData { (products,itemImages, error) -> Void in
             
             self.products = products!
             
             guard let itemImage = itemImages else {
                 return
+                
             }
+            
+            
+            for (index,_) in self.products.enumerate() {
+                dataArray.append(self.products[index].itemName!)
+            }
+            
             
             self.PFFiles += itemImage
             self.convertPFFilesToUIImage()
@@ -96,12 +103,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if shouldShowSearchResults {
-//            return filteredArray.count
-//        } else {
-//            return dataArray.count
-//        }
-        return self.products.count
+        if shouldShowSearchResults {
+            
+            return filteredArray.count
+            
+        } else {
+           
+            return self.products.count
+            
+        }
+
 
     }
     
@@ -109,26 +120,50 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
-          
-        cell.Product_Name.text = self.products[indexPath.row].itemName
         
-        
-        
-        cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
-        cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
-        
-        
-        
-        
-       Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
+        if shouldShowSearchResults {
+            cell.Product_Name.text = filteredArray[indexPath.row]
+            
+            
+            
+            cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
+            cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
+            
+            Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
+            
+            cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
+            
+           
+                    cell.ProductImage.image = self.myImages[indexPath.row]
+            
 
-        cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            if self.convertPFFilesToUIImage() {
-                cell.ProductImage.image = self.myImages[indexPath.row]
+        } else {
+            
+            
+            
+            cell.Product_Name.text = self.products[indexPath.row].itemName
+            
+            cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
+            cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
+            
+            Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
+            
+            cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
+            
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if self.convertPFFilesToUIImage() == true {
+                    cell.ProductImage.image = self.myImages[indexPath.row]
+                }
             }
+
         }
+        
+
+        
+        
+        
+        
+    
         
         print(self.myImages.count)
         return cell
