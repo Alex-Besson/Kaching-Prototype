@@ -19,10 +19,11 @@ class ProductDetailViewController: UIViewController {
     var itemDiscountPrice:String?
     var itemRetailPrice:String?
     var itemProgressBar:Float?
+    var itemImage:UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.productDetailImage.image = itemImage
         self.ProductDiscountPrice.text = itemDiscountPrice
         self.ProductRetailPrice.text = itemRetailPrice
         self.ProductDetailPBar.setProgress(itemProgressBar!, animated: true)

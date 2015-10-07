@@ -20,10 +20,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
     var Pbar = [Float]()
+    var PFFiles = [PFFile]()
+    var myImages = [UIImage]()
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
     var customSearchController: CustomSearchController!
+    
+    func convertPFFilesToUIImage() -> Bool {
+       
+        
+        
+        for PFFilez in PFFiles {
+        PFFilez.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                let eventImage = UIImage(data:imageData!)
+               
+                
+                
+                self.myImages.append(eventImage!)
+            }
+                
+            }
+        }
+     return true
+    }
     
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
@@ -43,25 +65,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
-    
+    var refresh = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productControllers.fetchParseData { (products, error) -> Void in
+        productControllers.fetchParseData { (products,itemImages, error) -> Void in
             
             self.products = products!
             
+            guard let itemImage = itemImages else {
+                return
+            }
             
-           
-            
+            self.PFFiles += itemImage
+            self.convertPFFilesToUIImage()
             self.tblSearchResults.reloadData()
-           
+     
             
             
         }
+        
 
+        
+        
 
         // Do any additional setup after loading the view.
         configureCustomSearchController()
@@ -95,20 +123,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
 
         cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-       
-//        if productControllers.itemImages.count > 0 {
-//        cell.ProductImage.image = productControllers.itemImages[0]
-//        } else {
-//            print("Image was not loaded")
-//        }
+
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if self.convertPFFilesToUIImage() {
+                cell.ProductImage.image = self.myImages[indexPath.row]
+            }
+        }
         
-//        if shouldShowSearchResults {
-//            cell.textLabel?.text = filteredArray[indexPath.row]
-//        } else {
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//        }
-//
-        
+        print(self.myImages.count)
         return cell
     }
 
@@ -158,8 +180,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
             detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
             detailViewController.itemProgressBar = self.Pbar[indexPath.row]
-          
-             
+            detailViewController.itemImage = self.myImages[indexPath.row]
+            
             
             }
         }
