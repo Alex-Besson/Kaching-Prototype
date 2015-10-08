@@ -8,15 +8,16 @@
 
 import UIKit
 
-var dataArray = [String]()
 
-var filteredArray = [String]()
+
+
 
 var shouldShowSearchResults = false
 
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
+    var filteredArray = [Parse_ProductModel]()
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
     var Pbar = [Float]()
@@ -81,9 +82,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             
-            for (index,_) in self.products.enumerate() {
-                dataArray.append(self.products[index].itemName!)
-            }
             
             
             self.PFFiles += itemImage
@@ -121,42 +119,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
         
-        if shouldShowSearchResults {
-            cell.Product_Name.text = filteredArray[indexPath.row]
-            
-            
-            
-            cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
-            cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
-            
-            Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
-            
-            cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-            
-           
-                    cell.ProductImage.image = self.myImages[indexPath.row]
-            
+        let product = (!shouldShowSearchResults) ? self.products[indexPath.row] :
+            self.filteredArray[indexPath.row]
+        
+        
+        cell.Product_Name.text = product.itemName
+        
+        
+        
+        cell.Product_RetailPrice.text = product.retailPrice
+        cell.Product_DiscountPrice.text = product.discountPrice
+        
+        
+        
+        
+        Pbar.append(CalculateProgressBar(product.currentCommit!, currentThreshold: product.threshold!))
+        
+        cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
 
-        } else {
-            
-            
-            
-            cell.Product_Name.text = self.products[indexPath.row].itemName
-            
-            cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
-            cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
-            
-            Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
-            
-            cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-            
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                if self.convertPFFilesToUIImage() == true {
-                    cell.ProductImage.image = self.myImages[indexPath.row]
-                }
-            }
-
-        }
+//
+//            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//                if self.convertPFFilesToUIImage() == true {
+//                    cell.ProductImage.image = self.myImages[indexPath.row]
+//                }
+//            }
+//
+//        }
         
 
         
@@ -192,10 +180,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // SEARCH DELEGATE FUNCTION
     
     func didChangeSearchText(searchText: String) {
-        filteredArray = dataArray.filter({ (product) -> Bool in
-            let productText : NSString = product
+        filteredArray = self.products.filter({ (product) -> Bool in
+            let productText = product.itemName?.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             
-            return (productText.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+            return productText != nil
         })
         
         tblSearchResults.reloadData()
