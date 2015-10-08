@@ -198,15 +198,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        
         if segue.identifier == "detailView" {
         if let  detailViewController = segue.destinationViewController as? ProductDetailViewController{
-        
-        if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
-            detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
-            detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
-            detailViewController.itemImage = self.myImages[indexPath.row]
-            detailViewController.currentItemCommit = self.products[indexPath.row].currentCommit
-            detailViewController.currentItemThreshold = self.products[indexPath.row].threshold
-            detailViewController.currentItemID = self.products[indexPath.row].itemId
+                 if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
+
+            detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
+                self.products[indexPath.row]
+                    detailViewController.itemImage = self.myImages[indexPath.row]
             }
+            
         }
         }
     }

@@ -9,17 +9,13 @@
 import UIKit
 
 class ProductDetailViewController: UIViewController {
+
+    var product: Parse_ProductModel!
     
-    
-    var itemDiscountPrice:String?
-    var itemRetailPrice:String?
-   
     var itemImage:UIImage?
-    var currentItemCommit:Float?
-    var currentItemThreshold:Float?
+    var changedCommit:Float = 0
     let commitChanger = Threshold_Changer()
-    var currentItemID:String?
-    var itemCommitChanged:Float = 0.00
+   
     
     @IBOutlet weak var productDetailImage: UIImageView!
 
@@ -30,14 +26,15 @@ class ProductDetailViewController: UIViewController {
     
     @IBAction func IAmIn(sender: AnyObject) {
         
-          itemCommitChanged = currentItemCommit!
+        guard var itemCommitChanged = product.currentCommit else {return}
         
         itemCommitChanged++
+         self.changedCommit = itemCommitChanged
         
-        guard let itemID = currentItemID else {return}
+        guard let itemID = product.itemId else {return}
         
       commitChanger.Change(itemID, change: itemCommitChanged)
-        print(currentItemCommit)
+        print(product.currentCommit)
     
     }
     
@@ -51,17 +48,18 @@ class ProductDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let itemProgressBar = itemCommitChanged/currentItemThreshold! as? Float else {
+        guard let itemThreshold = product.threshold else {
             return
         }
+       
+         let itemProgressBar = self.changedCommit/itemThreshold
         
         self.productDetailImage.image = itemImage
-        self.ProductDiscountPrice.text = itemDiscountPrice
-        self.ProductRetailPrice.text = itemRetailPrice
+        self.ProductDiscountPrice.text = product.discountPrice
+        self.ProductRetailPrice.text = product.retailPrice
         self.ProductDetailPBar.setProgress(itemProgressBar, animated: true)
-      self.loadView()
-
+      
+print(product)
         // Do any additional setup after loading the view.
     }
 
