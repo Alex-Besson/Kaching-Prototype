@@ -71,7 +71,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        self.view.backgroundColor = Elements.getBackgroundColor()
         productControllers.fetchParseData { (products,itemImages, error) -> Void in
             
             self.products = products!

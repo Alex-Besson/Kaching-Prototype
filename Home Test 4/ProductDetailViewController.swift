@@ -19,6 +19,7 @@ class ProductDetailViewController: UIViewController {
     
     @IBOutlet weak var productDetailImage: UIImageView!
 
+    @IBOutlet weak var ProductTitle: UILabel!
     @IBOutlet weak var ProductDetailPBar: UIProgressView!
     @IBOutlet weak var ProductDescription: UILabel!
     @IBOutlet weak var ProductRetailPrice: UILabel!
@@ -41,15 +42,33 @@ class ProductDetailViewController: UIViewController {
     @IBAction func IAmOut(sender: AnyObject) {
         
         
+
+    }
+    
+    @IBOutlet var scrollView: UIView!
+    
+    func configureViewColor() {
+        self.view.backgroundColor = UIColor(red: 244, green: 244, blue: 240, alpha: 1)
         
+        let customGrayColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1)
+        scrollView.backgroundColor = customGrayColor
+        ProductTitle.textColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
+        ProductDescription.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        ProductRetailPrice.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        ProductDiscountPrice.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         
     }
    
+    // VIEW DID LOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureViewColor()
         guard let itemThreshold = product.threshold else {
             return
+            
+            
         }
        
          let itemProgressBar = self.changedCommit/itemThreshold
