@@ -288,7 +288,7 @@
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="8" y="457" width="341" height="10"/>
+                                            <rect key="frame" x="8" y="456.5" width="341" height="10"/>
                                             <mask key="constraints">
                                                 <include reference="CoO-LV-FUq"/>
                                                 <include reference="eOr-mh-tjW"/>
