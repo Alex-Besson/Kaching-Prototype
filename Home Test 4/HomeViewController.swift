@@ -83,7 +83,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             
             
-            
             self.PFFiles += itemImage
             self.convertPFFilesToUIImage()
             self.tblSearchResults.reloadData()
