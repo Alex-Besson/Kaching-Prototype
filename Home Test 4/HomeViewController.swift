@@ -8,22 +8,45 @@
 
 import UIKit
 
-var dataArray = ["iPhone 6", "iPhone 6 Plus", "Crappy Samsung Phone", "Another Crappy Samsung Phone", "Vacuum Cleaner", "SONY 4K TV", "Samsung 4K TV", "iPad Pro", "Silicon Valley: Complete First Season", "Lamp", "La-Z Boy Chair", "1977 Gibson Les Paul Guitar", "Fender Jazz Bass", "The Big Bang Theory: Complete Series"]
 
-var filteredArray = [String]()
+
+
 
 var shouldShowSearchResults = false
 
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
+    var filteredArray = [Parse_ProductModel]()
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
     var Pbar = [Float]()
+    var PFFiles = [PFFile]()
+    var myImages = [UIImage]()
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
     var customSearchController: CustomSearchController!
+    
+    func convertPFFilesToUIImage() -> Bool {
+       
+        
+        
+        for PFFilez in PFFiles {
+        PFFilez.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                let eventImage = UIImage(data:imageData!)
+               
+                
+                
+                self.myImages.append(eventImage!)
+            }
+                
+            }
+        }
+     return true
+    }
     
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
@@ -43,72 +66,92 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
-    
+    var refresh = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        productControllers.fetchParseData { (products, error) -> Void in
+       
+        productControllers.fetchParseData { (products,itemImages, error) -> Void in
             
             self.products = products!
             
+            guard let itemImage = itemImages else {
+                return
+                
+            }
             
-           
             
+            
+            self.PFFiles += itemImage
+            self.convertPFFilesToUIImage()
             self.tblSearchResults.reloadData()
-           
+     
             
             
         }
+        
 
+        
+        
 
         // Do any additional setup after loading the view.
         configureCustomSearchController()
     }
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if shouldShowSearchResults {
-//            return filteredArray.count
-//        } else {
-//            return dataArray.count
-//        }
-        return self.products.count
+        if shouldShowSearchResults {
+            
+            return filteredArray.count
+            
+        } else {
+           
+            return self.products.count
+            
+        }
+
 
     }
     
     
-    
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
-          
-        cell.Product_Name.text = self.products[indexPath.row].itemName
+        
+        let product = (!shouldShowSearchResults) ? self.products[indexPath.row] :
+            self.filteredArray[indexPath.row]
+        
+        
+        cell.Product_Name.text = product.itemName
         
         
         
-        cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
-        cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
+        cell.Product_RetailPrice.text = product.retailPrice
+        cell.Product_DiscountPrice.text = product.discountPrice
         
         
         
         
-       Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
-
+        Pbar.append(CalculateProgressBar(product.currentCommit!, currentThreshold: product.threshold!))
+        
         cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-       
-//        if productControllers.itemImages.count > 0 {
-//        cell.ProductImage.image = productControllers.itemImages[0]
-//        } else {
-//            print("Image was not loaded")
-//        }
+
+
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if self.myImages.count > 0 {
+                    cell.ProductImage.image = self.myImages[indexPath.row]
+                }
+            }
+
         
-//        if shouldShowSearchResults {
-//            cell.textLabel?.text = filteredArray[indexPath.row]
-//        } else {
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//        }
-//
+    
+
         
+        
+        
+        
+    
+        
+        print(self.myImages.count)
         return cell
     }
 
@@ -132,11 +175,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tblSearchResults.reloadData()
     }
     
+    // SEARCH DELEGATE FUNCTION
+    
     func didChangeSearchText(searchText: String) {
-        filteredArray = dataArray.filter({ (product) -> Bool in
-            let productText : NSString = product
+        filteredArray = self.products.filter({ (product) -> Bool in
+            let productText = product.itemName?.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             
-            return (productText.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+            return productText != nil
         })
         
         tblSearchResults.reloadData()
@@ -153,15 +198,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        
         if segue.identifier == "detailView" {
         if let  detailViewController = segue.destinationViewController as? ProductDetailViewController{
-        
-        if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
-            detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
-            detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
-            detailViewController.itemProgressBar = self.Pbar[indexPath.row]
-          
-             
-            
+                 if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
+
+            detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
+                self.products[indexPath.row]
+                    detailViewController.itemImage = self.myImages[indexPath.row]
             }
+            
         }
         }
     }
