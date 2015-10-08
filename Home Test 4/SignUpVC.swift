@@ -1,12 +1,12 @@
 import UIKit
 
 class MainVC: UIViewController {
-    @IBOutlet weak var nameEntry: UITextField!
+    @IBOutlet weak var firstNameEntry: UITextField!
     @IBOutlet weak var emailEntry: UITextField!
     @IBOutlet weak var passwordEntry: UITextField!
 
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
 
@@ -56,24 +56,24 @@ class MainVC: UIViewController {
         //if let fname = defaults.stringForKey("savedname") {
         //nameLabel.text = "First name: \(fname)"
         
-        if let name = defaults.stringForKey("savedname") {
-            nameLabel.text = "Last name: \(name)"
+        if let firstName = defaults.stringForKey("savedfirstname") {
+            firstNameLabel.text = "First Name: \(firstName)"
             
             
         }
         
         if let email = defaults.stringForKey("savedemail") {
-            emailEntry.text = "Email: \(email)"
+            emailLabel.text = "Email: \(email)"
             
         }
         if let password = defaults.stringForKey("savedpassword") {
-            passwordEntry.text = "Password: \(password)"
+            passwordLabel.text = "Password: \(password)"
             
         }
         
         
         
-        userInfo.username = nameEntry.text!
+        userInfo.username = firstNameEntry.text!
         userInfo.email = emailEntry.text!
         userInfo.password = passwordEntry.text
         userInfo.signUpInBackgroundWithBlock { (succedded: Bool, error: NSError?) -> Void in
