@@ -135,15 +135,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
 
-//
-//            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-//                if self.convertPFFilesToUIImage() == true {
-//                    cell.ProductImage.image = self.myImages[indexPath.row]
-//                }
-//            }
-//
-//        }
+
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if self.myImages.count > 0 {
+                    cell.ProductImage.image = self.myImages[indexPath.row]
+                }
+            }
+
         
+    
 
         
         
