@@ -62,7 +62,9 @@ class ProductController {
                     return
                 }
                     
-                
+                guard let itemDesc = parseProduct.objectForKey("Description") else{
+                return
+                }
                 
                 
                 guard let itemImageURL = parseProduct.objectForKey("url") as? String else {
@@ -74,7 +76,7 @@ class ProductController {
                 let discountPriceString = String(format: "%.2f", discountPriceFloat)
                 let retailPriceString = String(format: "%.2f", retailPriceFloat)
                 
-                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit, threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString, itemId: currentItemID, itemImageURL: itemImageURL)]
+                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit, threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString, itemId: currentItemID, itemImageURL: itemImageURL,itemDescription: itemDesc as! String)]
               
                 
             }

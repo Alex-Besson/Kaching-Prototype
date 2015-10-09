@@ -61,7 +61,7 @@ class ProductDetailViewController: UIViewController {
             return
         }
        counter = itemCommit
-        
+        self.ProductDescription.text = product.itemDescription
         
         self.productDetailImage.imageFromUrl(product.itemImageURL!)
         self.ProductDiscountPrice.text = product.discountPrice

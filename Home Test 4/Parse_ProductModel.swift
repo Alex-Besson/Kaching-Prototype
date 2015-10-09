@@ -17,9 +17,10 @@ var retailPrice:String?
 var discountPrice:String?
     var itemId:String?
     var itemImageURL:String?
+    var itemDescription:String?
 
 
-    init(itemName:String,currentCommit:Float,threshold:Float,retailPrice:String,discountPrice:String,itemId:String,itemImageURL:String) {
+    init(itemName:String,currentCommit:Float,threshold:Float,retailPrice:String,discountPrice:String,itemId:String,itemImageURL:String,itemDescription:String) {
     
     self.itemName = itemName
     self.currentCommit = currentCommit
@@ -28,6 +29,7 @@ var discountPrice:String?
     self.discountPrice = discountPrice
         self.itemId = itemId
         self.itemImageURL = itemImageURL
+        self.itemDescription = itemDescription
    
 }
 

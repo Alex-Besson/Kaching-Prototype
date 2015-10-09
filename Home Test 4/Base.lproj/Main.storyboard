@@ -90,7 +90,6 @@
         <!--Home View Controller-->
         <scene sceneID="x9h-LK-ddW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GBL-Mb-FzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="bcx-2M-SfS" customClass="HomeViewController" customModule="Home_Test_4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jyy-ca-TIX"/>
@@ -209,7 +208,7 @@
                                             <outlet property="Product_Name" destination="r07-1m-jdK" id="3hM-sf-mDr"/>
                                             <outlet property="Product_ProgressBar" destination="twd-GU-NGW" id="qsw-49-1b5"/>
                                             <outlet property="Product_RetailPrice" destination="lNC-2G-MbO" id="5oP-ca-1ab"/>
-                                            <segue destination="bMI-rf-3Ta" kind="show" identifier="detailView" id="gnR-Yf-t5N"/>
+                                            <segue destination="QEd-2r-hsX" kind="show" identifier="detailView" id="nSc-in-EnF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -231,8 +230,28 @@
                         <outlet property="tblSearchResults" destination="F4T-Fo-oBY" id="bHM-W3-Vdf"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBL-Mb-FzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1468" y="1047"/>
+        </scene>
+        <!--Temporary Detail View Controller-->
+        <scene sceneID="jtw-Ym-g5s">
+            <objects>
+                <viewController id="QEd-2r-hsX" customClass="TemporaryDetailViewController" customModule="Home_Test_4" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wtW-T5-8Si"/>
+                        <viewControllerLayoutGuide type="bottom" id="mSl-2f-E5M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aJI-bJ-q3t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQP-kU-MzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2245" y="1047"/>
         </scene>
         <!--Product Detail View Controller-->
         <scene sceneID="wKc-oO-65V">
@@ -641,7 +660,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ik7-b7-5tr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2142" y="1040"/>
+            <point key="canvasLocation" x="2535" y="1040"/>
         </scene>
         <!--Help Support Controller-->
         <scene sceneID="JG6-bX-E3v">

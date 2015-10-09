@@ -143,7 +143,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        
         if segue.identifier == "detailView" {
-        if let  detailViewController = segue.destinationViewController as? ProductDetailViewController{
+        if let  detailViewController = segue.destinationViewController as? TemporaryDetailViewController{
                  if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
 
             detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
