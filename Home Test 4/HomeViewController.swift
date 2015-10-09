@@ -8,10 +8,6 @@
 
 import UIKit
 
-
-
-
-
 var shouldShowSearchResults = false
 
 
@@ -21,32 +17,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
     var Pbar = [Float]()
-    var PFFiles = [PFFile]()
-    var myImages = [UIImage]()
+   
+    
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
     var customSearchController: CustomSearchController!
     
-    func convertPFFilesToUIImage() -> Bool {
-       
-        
-        
-        for PFFilez in PFFiles {
-        PFFilez.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                let eventImage = UIImage(data:imageData!)
-               
-                
-                
-                self.myImages.append(eventImage!)
-            }
-                
-            }
-        }
-     return true
-    }
+  
     
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
@@ -72,25 +50,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        productControllers.fetchParseData { (products,itemImages, error) -> Void in
+        productControllers.fetchParseData { (products, error) -> Void in
             
             self.products = products!
             
-            guard let itemImage = itemImages else {
-                return
-                
-            }
+           
             
             
-            
-            self.PFFiles += itemImage
-            self.convertPFFilesToUIImage()
+          
             self.tblSearchResults.reloadData()
      
             
             
         }
-        
+       
 
         
         
@@ -136,22 +109,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
 
 
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                if self.myImages.count > 0 {
-                    cell.ProductImage.image = self.myImages[indexPath.row]
-                }
-            }
-
+       
+            cell.ProductImage.imageFromUrl(product.itemImageURL!)
         
-    
-
-        
-        
-        
-        
-    
-        
-        print(self.myImages.count)
+       
         return cell
     }
 
@@ -202,7 +163,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
                 self.products[indexPath.row]
-                    detailViewController.itemImage = self.myImages[indexPath.row]
+                   
             }
             
         }

@@ -12,10 +12,10 @@ class ProductDetailViewController: UIViewController {
 
     var product: Parse_ProductModel!
     
-    var itemImage:UIImage?
-    var changedCommit:Float = 0
+    var counter:Float = 0
     let commitChanger = Threshold_Changer()
    
+    
     
     @IBOutlet weak var productDetailImage: UIImageView!
 
@@ -26,22 +26,27 @@ class ProductDetailViewController: UIViewController {
     
     @IBAction func IAmIn(sender: AnyObject) {
         
-        guard var itemCommitChanged = product.currentCommit else {return}
+       
         
-        itemCommitChanged++
-         self.changedCommit = itemCommitChanged
+        counter++
+        
         
         guard let itemID = product.itemId else {return}
         
-      commitChanger.Change(itemID, change: itemCommitChanged)
-        print(product.currentCommit)
+      commitChanger.Change(itemID, change: counter)
+        
+        ProductDetailPBar.ChangeProgressBar(counter, threshold: product.threshold!)
+        print(counter)
     
     }
     
     @IBAction func IAmOut(sender: AnyObject) {
         
+        counter = 0
+        ProductDetailPBar.ChangeProgressBar(counter, threshold: product.threshold!)
         
-        
+        guard let itemID = product.itemId else {return}
+        commitChanger.Change(itemID, change: counter)
         
     }
    
@@ -51,13 +56,19 @@ class ProductDetailViewController: UIViewController {
         guard let itemThreshold = product.threshold else {
             return
         }
-       
-         let itemProgressBar = self.changedCommit/itemThreshold
+        guard let itemCommit = product.currentCommit else
+        {
+            return
+        }
+       counter = itemCommit
         
-        self.productDetailImage.image = itemImage
+        
+        self.productDetailImage.imageFromUrl(product.itemImageURL!)
         self.ProductDiscountPrice.text = product.discountPrice
         self.ProductRetailPrice.text = product.retailPrice
-        self.ProductDetailPBar.setProgress(itemProgressBar, animated: true)
+        self.ProductDetailPBar.ChangeProgressBar(itemCommit, threshold: itemThreshold)
+        
+//        self.ProductDetailPBar.setProgress(itemProgressBar, animated: true)
       
 print(product)
         // Do any additional setup after loading the view.

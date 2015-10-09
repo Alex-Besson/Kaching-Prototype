@@ -12,20 +12,25 @@ class ProductController {
 
     
     var products = [Parse_ProductModel]()
-    var itemImagesPFFile = [PFFile]()
     
-    func fetchParseData (callBack:([Parse_ProductModel]?,itemImages:[PFFile]?, NSError?) -> Void ) -> Void {
+    
+    
+    
+    
+    
+    
+    func fetchParseData (callBack:([Parse_ProductModel]?, NSError?) -> Void ) -> Void {
         let query = PFQuery(className: "ItemList")
         query.findObjectsInBackgroundWithBlock { (productsArray, error) -> Void in
             
             guard error == nil else {
-                               callBack(nil,itemImages: nil, error)
+                               callBack(nil, error)
                 print("That Failed")
                 return
             }
             guard let actualProducts = productsArray else {
                 print("This failed")
-                                callBack(nil,itemImages: nil, nil)
+                                callBack(nil, nil)
                 
                 return
             }
@@ -60,7 +65,7 @@ class ProductController {
                 
                 
                 
-                guard let itemImagePFFiles = parseProduct.objectForKey("ItemImage") as? PFFile else {
+                guard let itemImageURL = parseProduct.objectForKey("url") as? String else {
                     return
                 }
                 
@@ -68,13 +73,13 @@ class ProductController {
                 
                 let discountPriceString = String(format: "%.2f", discountPriceFloat)
                 let retailPriceString = String(format: "%.2f", retailPriceFloat)
-                //                self.products.append(product)
-                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit , threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString,itemId:currentItemID)]
-                self.itemImagesPFFile += [itemImagePFFiles]
+                
+                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit, threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString, itemId: currentItemID, itemImageURL: itemImageURL)]
+              
                 
             }
             
-            callBack(self.products,itemImages: self.itemImagesPFFile, nil)
+            callBack(self.products, nil)
         }
         
         
