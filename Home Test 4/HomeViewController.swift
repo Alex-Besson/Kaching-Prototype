@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
     var Pbar = [Float]()
+ 
    
     
 
@@ -35,17 +36,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         customSearchController.customDelegate = self
     }
 
-    func CalculateProgressBar (currentCommit:Float,currentThreshold:Float) -> Float{
-        
-        return (currentCommit/currentThreshold)
-        
-        
-    }
     
     
-    
-    var refresh = false
-    
+  
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,24 +47,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         productControllers.fetchParseData { (products, error) -> Void in
             
             self.products = products!
-            
-           
-            
-            
-          
+       
             self.tblSearchResults.reloadData()
-     
-            
             
         }
-       
-
+     
+            configureCustomSearchController()
         
-        
-
-        // Do any additional setup after loading the view.
-        configureCustomSearchController()
+   
     }
+    
+    
+
+    
+    
+    
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
@@ -96,20 +87,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.Product_Name.text = product.itemName
         
-        
-        
         cell.Product_RetailPrice.text = product.retailPrice
         cell.Product_DiscountPrice.text = product.discountPrice
-        
-        
-        
-        
-        Pbar.append(CalculateProgressBar(product.currentCommit!, currentThreshold: product.threshold!))
-        
-        cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
-
-
+    
        
+        
+        
+        cell.Product_ProgressBar.ChangeProgressBar(product.currentCommit!, threshold: product.threshold!)
+        
             cell.ProductImage.imageFromUrl(product.itemImageURL!)
         
        

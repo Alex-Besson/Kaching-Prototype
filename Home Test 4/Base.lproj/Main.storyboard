@@ -90,6 +90,7 @@
         <!--Home View Controller-->
         <scene sceneID="x9h-LK-ddW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBL-Mb-FzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="bcx-2M-SfS" customClass="HomeViewController" customModule="Home_Test_4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jyy-ca-TIX"/>
@@ -230,7 +231,6 @@
                         <outlet property="tblSearchResults" destination="F4T-Fo-oBY" id="bHM-W3-Vdf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GBL-Mb-FzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1468" y="1047"/>
         </scene>
