@@ -55,7 +55,18 @@ class TemporaryDetailViewController: UIViewController {
         
         super.viewDidLoad()
         
+        guard let itemThreshold = product.threshold else {
+            return
+        }
         
+        guard let itemCommit = product.currentCommit else
+        {
+            return
+        }
+        
+        counter = itemCommit
+        
+        pBarCommitProgress.ChangeProgressBar(itemCommit, threshold: itemThreshold)
         
         self.view.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         
@@ -113,9 +124,13 @@ class TemporaryDetailViewController: UIViewController {
         
         lblDescription.frame = CGRectMake(self.view.bounds.width / 2 - 168, self.view.bounds.height / 2 - 50, 336, 220)
         
+//        lblDescription.frame = CGRectInset(100.00, 100.00, 100.00)
+        
+    
+        
         lblDescription.text = product.itemDescription
         
-        lblDescription.font = UIFont(name: "Helvetica Neue", size: 15)
+        lblDescription.font = UIFont(name: "Helvetica Neue", size: 14)
         
         lblDescription.textColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
         
@@ -124,6 +139,12 @@ class TemporaryDetailViewController: UIViewController {
         lblDescription.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
         lblDescription.textAlignment = NSTextAlignment.Justified
+        
+        lblDescription.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        
+        lblDescription.layer.cornerRadius = 10
+        
+        lblDescription.clipsToBounds = true
         
     }
     
@@ -137,7 +158,11 @@ class TemporaryDetailViewController: UIViewController {
         
         imgItemImage.imageFromUrl(product.itemImageURL!)
         
-        imgItemImage.contentMode = UIViewContentMode.ScaleAspectFit
+        imgItemImage.layer.cornerRadius = 10
+        
+        imgItemImage.clipsToBounds = true
+        
+        imgItemImage.contentMode = UIViewContentMode.ScaleAspectFill
         
     }
     

@@ -332,9 +332,6 @@
                                                 <exclude reference="7Ym-T4-ixF"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="198" y="80" width="112" height="30"/>
-                                        </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="6ph-Ec-eZC"/>
@@ -363,9 +360,6 @@
                                                 <exclude reference="yrI-K8-XPF"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="172" y="120" width="112" height="26"/>
-                                        </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <exclude reference="8rC-Ub-jKv"/>
@@ -390,9 +384,6 @@
                                                 <exclude reference="yPg-RM-re1"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="342" y="80" width="88" height="30"/>
-                                        </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
                                                 <include reference="I8L-5v-1W1"/>
@@ -416,9 +407,6 @@
                                                 <exclude reference="FK9-o9-pwJ"/>
                                                 <exclude reference="puh-X8-flJ"/>
                                             </mask>
-                                        </variation>
-                                        <variation key="heightClass=compact" misplaced="YES">
-                                            <rect key="frame" x="341" y="120" width="89" height="31"/>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
@@ -660,7 +648,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ik7-b7-5tr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2535" y="1040"/>
+            <point key="canvasLocation" x="2958" y="1047"/>
         </scene>
         <!--Help Support Controller-->
         <scene sceneID="JG6-bX-E3v">
@@ -720,7 +708,7 @@
                                 <state key="normal" title="My Commits"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s12-Tl-JdT">
-                                <rect key="frame" x="86.5" y="252" width="87" height="30"/>
+                                <rect key="frame" x="87" y="252" width="87" height="30"/>
                                 <animations/>
                                 <state key="normal" title="My Favorites"/>
                             </button>
