@@ -86,9 +86,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         cell.Product_Name.text = product.itemName
+     
         
-        cell.Product_RetailPrice.text = product.retailPrice
-        cell.Product_DiscountPrice.text = product.discountPrice
+        cell.Product_RetailPrice.text = "Was: $\(product.retailPrice!)"
+        cell.Product_DiscountPrice.text = "Now: $\(product.discountPrice!)"
     
        
         

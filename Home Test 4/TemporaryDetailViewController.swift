@@ -294,15 +294,18 @@ class TemporaryDetailViewController: UIViewController {
     
     func configureProgressView() {
         
-        self.view.addSubview(pBarCommitProgress)
+        
         
         pBarCommitProgress.frame = CGRectMake(self.view.bounds.width / 2 - 150, 600, 300, 100)
         
+        self.pBarCommitProgress.transform = CGAffineTransformScale(self.pBarCommitProgress.transform, 1, 5)
         
+
         
-        let constraintPBarHeight : NSLayoutConstraint = NSLayoutConstraint(item: pBarCommitProgress, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 40)
-        
-        
+//        let constraintPBarHeight : NSLayoutConstraint = NSLayoutConstraint(item: pBarCommitProgress, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 40)
+//       
+//        self.pBarCommitProgress.addConstraint(constraintPBarHeight)
+        self.view.addSubview(pBarCommitProgress)
         
         //        let heightConstraint = pBarCommitProgress.heightAnchor.constraintEqualToAnchor(nil, constant: 100)
         
@@ -316,7 +319,7 @@ class TemporaryDetailViewController: UIViewController {
         
         //        self.view.addConstraint(constraintPBarHeight)
         
-        self.pBarCommitProgress.addConstraint(constraintPBarHeight)
+        
         
     }
     
