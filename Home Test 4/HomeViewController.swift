@@ -16,9 +16,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var filteredArray = [Parse_ProductModel]()
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
-    var Pbar = [Float]()
- 
-   
+
+    
+    lazy var refreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+       
+        
+        return refreshControl
+    }()
+    
+    func refresh(){
+        loadData()
+        refreshControl.endRefreshing()
+        print("refresh complete")
+    }
+    
     
 
     @IBOutlet weak var tblSearchResults: UITableView!
@@ -37,28 +50,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     
-    
+    func loadData() {
+        productControllers.fetchParseData { (products, error) -> Void in
+            
+            self.products = products!
+         
+            self.tblSearchResults.reloadData()
+            
+        }
+    }
   
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        productControllers.fetchParseData { (products, error) -> Void in
-            
-            self.products = products!
-       
-            self.tblSearchResults.reloadData()
-            
-        }
-     
+        
+        
+       loadData()
+        
+        self.tblSearchResults.addSubview(self.refreshControl)
             configureCustomSearchController()
         
-   
+
     }
     
     
-
     
     
     

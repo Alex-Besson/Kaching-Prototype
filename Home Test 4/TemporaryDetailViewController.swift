@@ -359,7 +359,6 @@ class TemporaryDetailViewController: UIViewController {
     }
 
     
-    
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
