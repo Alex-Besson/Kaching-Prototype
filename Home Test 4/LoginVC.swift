@@ -13,10 +13,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var usernameEntry: UITextField!
     @IBOutlet weak var passwordEntry: UITextField!
     
-//    @IBOutlet weak var usernameLabel: UILabel!
-//    @IBOutlet weak var passwordLabel: UILabel!
+   
+
     
-    var loginDefaults = NSUserDefaults.standardUserDefaults()
+ 
     
     func callSignup() {
         let userInfo = PFUser()
@@ -63,6 +63,7 @@ class LoginVC: UIViewController {
                 print("user info")
             } else {
                 print("login successful")
+                
             }
             
         }

@@ -4,46 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts 2.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<false/>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<false/>
+		</dict>
+		<key>ParseUI.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-Home Test 4.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>593183765B25F2FE2E6569C30DFD4C96</key>
+		<key>95570FDA6CD4CCC902B094E5C7AAF621</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6564DAE4F8A294D22DE6061BD8F7FB0F</key>
+		<key>D50C7A33BD798E82B9FBE85E9872DE4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9613698645CE337793507FEB704BE702</key>
+		<key>D7E5942F3FA26B5D182C33FBBC8DCD1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC427FC46D2E427007D0287A4EBE4CA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

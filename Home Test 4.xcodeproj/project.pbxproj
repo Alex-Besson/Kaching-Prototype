@@ -15,6 +15,7 @@
 		E866C5121BC2312B008E4955 /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5111BC2312B008E4955 /* HomeViewTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E866C5141BC231DC008E4955 /* Parse_ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */; settings = {ASSET_TAGS = (); }; };
 		E866C5161BC233FB008E4955 /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C5151BC233FB008E4955 /* ProductController.swift */; settings = {ASSET_TAGS = (); }; };
+		E87193131BD35F8A00A7B26E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87193121BD35F8A00A7B26E /* LogInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E8CECDF11BC7A35D00ACDFAD /* ProgressBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CECDF01BC7A35D00ACDFAD /* ProgressBarExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		E8CECDF31BC8384500ACDFAD /* TemporaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CECDF21BC8384500ACDFAD /* TemporaryDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E8F87BBF1BC799FD00547842 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F87BBE1BC799FD00547842 /* UIImageExtension.swift */; settings = {ASSET_TAGS = (); }; };
@@ -65,6 +66,7 @@
 		E866C5111BC2312B008E4955 /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parse_ProductModel.swift; sourceTree = "<group>"; };
 		E866C5151BC233FB008E4955 /* ProductController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
+		E87193121BD35F8A00A7B26E /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E8CECDF01BC7A35D00ACDFAD /* ProgressBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarExtension.swift; sourceTree = "<group>"; };
 		E8CECDF21BC8384500ACDFAD /* TemporaryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryDetailViewController.swift; sourceTree = "<group>"; };
 		E8F87BBE1BC799FD00547842 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = ../UIImageExtension.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				FA97BF7D1BBDCDFB002E8197 /* HamburgerViewController.swift */,
 				E866C5151BC233FB008E4955 /* ProductController.swift */,
 				E866C5131BC231DC008E4955 /* Parse_ProductModel.swift */,
+				E87193121BD35F8A00A7B26E /* LogInViewController.swift */,
 				0CDFD1E31BD03ADD0027008F /* SignUpVC.swift */,
 				0CDFD1E51BD03B1D0027008F /* LoginVC.swift */,
 				E866C50E1BC22C66008E4955 /* Ka_Ching_Parse.h */,
@@ -398,6 +401,7 @@
 				FA97BFFF1BBE1305002E8197 /* CustomSearchBar.swift in Sources */,
 				E8CECDF11BC7A35D00ACDFAD /* ProgressBarExtension.swift in Sources */,
 				FA97C0031BBE1385002E8197 /* CustomSearchControllerDelegate.swift in Sources */,
+				E87193131BD35F8A00A7B26E /* LogInViewController.swift in Sources */,
 				FA97BF501BBDCCC4002E8197 /* ViewController.swift in Sources */,
 				E866C5161BC233FB008E4955 /* ProductController.swift in Sources */,
 				FA97BF4E1BBDCCC4002E8197 /* AppDelegate.swift in Sources */,

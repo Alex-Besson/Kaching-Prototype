@@ -237,11 +237,11 @@ class TemporaryDetailViewController: UIViewController {
             
         }
         
+        
+        
         btnCommit.addTarget(self, action: "effectPBar:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        //        btnCommit.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
         
-        //        btnCommit.setTitleColor(UIColor.purpleColor(), forState: UIControlState.Normal)
         
         
         
