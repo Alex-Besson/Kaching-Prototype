@@ -12,6 +12,8 @@ class TemporaryDetailViewController: UIViewController {
 
     // UI ELEMENTS
     
+    var login = LogInViewController()
+    
     var product: Parse_ProductModel!
     
     var counter:Float = 0
@@ -37,7 +39,7 @@ class TemporaryDetailViewController: UIViewController {
     
     let btnImOut = UIButton(type: UIButtonType.System) as UIButton
     
-    
+    let btnLogOut = UIButton(type: UIButtonType.System) as UIButton
     
     let pBarCommitProgress = UIProgressView()
     
@@ -48,7 +50,12 @@ class TemporaryDetailViewController: UIViewController {
     
     
     // VIEW DID LOAD
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if PFUser.currentUser() != nil {
+            configureLogOutButton()
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -71,9 +78,7 @@ class TemporaryDetailViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         
         
-        
-        
-        
+       
         configureTitleLabel()
         
         configureDescriptionLabel()
@@ -97,6 +102,7 @@ class TemporaryDetailViewController: UIViewController {
     
     
     // UI ELEMENTS CONFIGURATION FUNCTIONS
+    
     
     
     
@@ -250,6 +256,11 @@ class TemporaryDetailViewController: UIViewController {
     //Commit button action
     
     func effectPBar(sender:UIButton!) {
+        
+        if PFUser.currentUser() == nil {
+            self.presentViewController(login.logInViewController, animated: true, completion: nil)
+            
+        } else {
         counter++
         
         
@@ -259,6 +270,7 @@ class TemporaryDetailViewController: UIViewController {
         
         pBarCommitProgress.ChangeProgressBar(counter, threshold: product.threshold!)
         print(counter)
+        }
     }
     
     
@@ -286,10 +298,41 @@ class TemporaryDetailViewController: UIViewController {
         
         btnBuyNow.setTitleColor(UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1), forState: .Highlighted)
         
-        //        btnBuyNow.center = CGPoint(x: 300, y: 500)
+       
         
     }
     
+    func configureLogOutButton() {
+        
+        self.view.addSubview(btnLogOut)
+        
+        btnLogOut.frame = CGRectMake(self.view.bounds.width - 80, 610, 70, 30)
+        
+        btnLogOut.setTitle("Log Out", forState: UIControlState.Normal)
+        
+        btnLogOut.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        
+        
+        
+        btnLogOut.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
+        
+        btnLogOut.layer.borderColor = UIColor.redColor().CGColor
+        
+        btnLogOut.layer.borderWidth = 1.0
+        
+        btnLogOut.layer.cornerRadius = 8.0
+        
+        
+        
+        btnLogOut.setTitleColor(UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1), forState: .Highlighted)
+        btnLogOut.addTarget(self, action: "clientLogOut:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+    }
+    
+    func clientLogOut(){
+        PFUser.logOutInBackground()
+    }
     
     
     func configureProgressView() {
@@ -302,23 +345,9 @@ class TemporaryDetailViewController: UIViewController {
         
 
         
-//        let constraintPBarHeight : NSLayoutConstraint = NSLayoutConstraint(item: pBarCommitProgress, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 40)
-//       
-//        self.pBarCommitProgress.addConstraint(constraintPBarHeight)
         self.view.addSubview(pBarCommitProgress)
         
-        //        let heightConstraint = pBarCommitProgress.heightAnchor.constraintEqualToAnchor(nil, constant: 100)
-        
-        
-        
-        //        NSLayoutConstraint.activateConstraints([heightConstraint])
-        
-        //        self.view.addConstraint(heightConstraint)
-        
-        
-        
-        //        self.view.addConstraint(constraintPBarHeight)
-        
+       
         
         
     }
