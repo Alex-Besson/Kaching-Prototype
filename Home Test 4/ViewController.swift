@@ -45,6 +45,10 @@ class ViewController: UIViewController {
         }
     }
     
+    func configureColors() {
+        self.view.backgroundColor = CustomColors.getDescriptionTextColor()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

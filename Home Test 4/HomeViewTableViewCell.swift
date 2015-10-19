@@ -16,9 +16,17 @@ class HomeViewTableViewCell: UITableViewCell {
     @IBOutlet weak var Product_Name: UILabel!
     @IBOutlet weak var Product_RetailPrice: UILabel!
     
+    func configureColor() {
+//        self.backgroundColor = CustomColors.getViewBackgroundColor()
+//        self.Product_DiscountPrice.textColor = CustomColors.getPriceLabelColor()
+//        self.Product_RetailPrice.textColor = CustomColors.getPriceLabelColor()
+//        self.Product_Name.textColor = CustomColors.getTitleTextColor()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        configureColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
