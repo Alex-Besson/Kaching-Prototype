@@ -44,7 +44,7 @@ class TemporaryDetailViewController: UIViewController {
     let pBarCommitProgress = UIProgressView()
     
     
-    
+    let currentUser = PFUser.currentUser()
     
     
     
@@ -53,14 +53,40 @@ class TemporaryDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if PFUser.currentUser() != nil {
+            guard let username = currentUser?.objectId else {return}
+            guard let itemCommit = product.currentCommit else
+            {
+                return
+            }
+            guard let myitemID = product.itemId else {return}
+            
+                
+            
+            self.commitChanger.addUserToItem(username, myItemID: myitemID, currCommit: itemCommit)
+            
+            
+            btnLogOut.hidden = false
             configureLogOutButton()
+            if counter > 0 {
+            btnImOut.hidden = false
+            configureImOutButton()
+                
+                
+            } else {
+                print("no user")
+            }
         }
+        
+        
     }
+    
+  
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+       
         
         guard let itemThreshold = product.threshold else {
             return
@@ -70,6 +96,15 @@ class TemporaryDetailViewController: UIViewController {
         {
             return
         }
+//        guard let myitemID = product.itemId else {return}
+        
+        
+//        if PFUser.currentUser() != nil  {
+//            guard let username = currentUser?.objectId else {return}
+//
+//            commitChanger.addUserToItem(username, myItemID: myitemID, currCommit: itemCommit)
+//        }
+        
         
         counter = itemCommit
         
@@ -95,7 +130,6 @@ class TemporaryDetailViewController: UIViewController {
         
         configureProgressView()
         
-        configureImOutButton()
         
     }
     
@@ -261,15 +295,22 @@ class TemporaryDetailViewController: UIViewController {
             self.presentViewController(login.logInViewController, animated: true, completion: nil)
             
         } else {
+            
+           
         counter++
         
         
         guard let itemID = product.itemId else {return}
+            
+            guard let user = currentUser?.objectId else {return}
         
-        commitChanger.Change(itemID, change: counter)
+        commitChanger.change(user, myItemID: itemID, change: counter)
+        
         
         pBarCommitProgress.ChangeProgressBar(counter, threshold: product.threshold!)
         print(counter)
+            
+
         }
     }
     
@@ -330,8 +371,17 @@ class TemporaryDetailViewController: UIViewController {
         
     }
     
-    func clientLogOut(){
-        PFUser.logOutInBackground()
+    func clientLogOut(sender:UIButton!){
+        PFUser.logOutInBackgroundWithBlock { (error) -> Void in
+            if error != nil {
+                print("error logging out")
+                
+            } else {
+                print("log out successful")
+                self.btnLogOut.hidden = true
+                self.btnImOut.hidden = true
+            }
+        }
     }
     
     
@@ -384,7 +434,8 @@ class TemporaryDetailViewController: UIViewController {
         pBarCommitProgress.ChangeProgressBar(counter, threshold: product.threshold!)
         
         guard let itemID = product.itemId else {return}
-        commitChanger.Change(itemID, change: counter)
+        guard let user = currentUser?.objectId else {return}
+        commitChanger.change(user, myItemID: itemID, change: counter)
     }
 
     

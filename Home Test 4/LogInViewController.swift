@@ -27,18 +27,18 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.logInViewController.delegate = self
+        self.signUpViewController.delegate = self
+        
         if (PFUser.currentUser() == nil){
             
-            
-            
-            self.logInViewController.delegate = self
-         
-            self.signUpViewController.delegate = self
             self.logInViewController.signUpController = self.signUpViewController
             
             self.presentViewController(logInViewController, animated: true, completion: nil)
             
-        }
+        } 
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,7 +48,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
 
     //Parse Log in
     
-    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+   func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
         if (!username.isEmpty || !password.isEmpty) {
             return true
         } else {
@@ -57,7 +57,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     }
     
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        logInViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {

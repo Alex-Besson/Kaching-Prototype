@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
@@ -45,8 +46,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         customSearchController.customSearchBar.placeholder = "Search here..."
         tblSearchResults.tableHeaderView = customSearchController.customSearchBar
-        
+       
         customSearchController.customDelegate = self
+        
+        
     }
 
     
@@ -65,7 +68,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print(navigationController?.navigationBar.frame.size.height)
        loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
