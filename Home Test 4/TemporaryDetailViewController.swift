@@ -52,7 +52,10 @@ class TemporaryDetailViewController: UIViewController {
     // VIEW DID LOAD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+     
         if PFUser.currentUser() != nil {
+            
             guard let username = currentUser?.objectId else {return}
             guard let itemCommit = product.currentCommit else
             {
@@ -86,7 +89,7 @@ class TemporaryDetailViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
+       print("viewdidload")
         
         guard let itemThreshold = product.threshold else {
             return
@@ -96,14 +99,7 @@ class TemporaryDetailViewController: UIViewController {
         {
             return
         }
-//        guard let myitemID = product.itemId else {return}
-        
-        
-//        if PFUser.currentUser() != nil  {
-//            guard let username = currentUser?.objectId else {return}
-//
-//            commitChanger.addUserToItem(username, myItemID: myitemID, currCommit: itemCommit)
-//        }
+
         
         
         counter = itemCommit
@@ -292,7 +288,8 @@ class TemporaryDetailViewController: UIViewController {
     func effectPBar(sender:UIButton!) {
         
         if PFUser.currentUser() == nil {
-            self.presentViewController(login.logInViewController, animated: true, completion: nil)
+//            self.presentViewController(login.logInViewController, animated: true, completion: nil)
+           self.performSegueWithIdentifier("login", sender: self)
             
         } else {
             

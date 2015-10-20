@@ -15,7 +15,38 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     var logInViewController = PFLogInViewController()
     var signUpViewController = PFSignUpViewController()
     
+    //Parse Log in
     
+    func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
+        if (!username.isEmpty || !password.isEmpty) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        self.logInViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
+        print("Failed to login")
+    }
+    
+    
+    //Parse Sign up
+    
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        self.logInViewController.signUpController?.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
+        print("Failed To sign up")
+    }
+    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
+        print("User cancelled sign up")
+    }
+
     
     
     override func viewDidLoad() {
@@ -26,6 +57,9 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+    
         
         self.logInViewController.delegate = self
         self.signUpViewController.delegate = self
@@ -46,36 +80,6 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
     }
     
 
-    //Parse Log in
-    
-   func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
-        if (!username.isEmpty || !password.isEmpty) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
-        logInViewController.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func logInViewController(logInController: PFLogInViewController, didFailToLogInWithError error: NSError?) {
-        print("Failed to login")
-    }
-   
-    
-    //Parse Sign up
-    
-    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    func signUpViewController(signUpController: PFSignUpViewController, didFailToSignUpWithError error: NSError?) {
-        print("Failed To sign up")
-    }
-    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) {
-        print("User cancelled sign up")
-    }
     
         
 }

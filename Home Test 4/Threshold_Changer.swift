@@ -18,7 +18,7 @@ class Threshold_Changer: NSObject {
         
         
         let query = PFQuery(className: "UserToItem")
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
+  
         
         
         query.whereKey("username", equalTo: userID)
@@ -40,7 +40,7 @@ class Threshold_Changer: NSObject {
                 print("it exists")
             }
 
-        }
+        
 
     }
 }

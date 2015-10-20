@@ -27,6 +27,7 @@ class LoginVC: UIViewController {
                 print("user info")
             } else {
                 print("login successful")
+                
             }
             
         }
@@ -58,15 +59,11 @@ class LoginVC: UIViewController {
         let userInfo = PFUser()
         userInfo.username = usernameEntry.text!
         userInfo.password = passwordEntry.text!
-        userInfo.signUpInBackgroundWithBlock { (succedded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                print("user info")
-            } else {
-                print("login successful")
-                
-            }
-            
-        }
+        PFUser.logInWithUsernameInBackground(userInfo.username!, password: userInfo.password!)
+        
+        
+        
+        
         
     }
 }

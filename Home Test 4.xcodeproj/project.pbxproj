@@ -18,6 +18,7 @@
 		E87193131BD35F8A00A7B26E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87193121BD35F8A00A7B26E /* LogInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E8CECDF11BC7A35D00ACDFAD /* ProgressBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CECDF01BC7A35D00ACDFAD /* ProgressBarExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		E8CECDF31BC8384500ACDFAD /* TemporaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CECDF21BC8384500ACDFAD /* TemporaryDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E8EBB0231BD6B91A00E8A8A0 /* Home_Test_4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97BF621BBDCCC4002E8197 /* Home_Test_4Tests.swift */; settings = {ASSET_TAGS = (); }; };
 		E8F87BBF1BC799FD00547842 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F87BBE1BC799FD00547842 /* UIImageExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		FA97BF4E1BBDCCC4002E8197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97BF4D1BBDCCC4002E8197 /* AppDelegate.swift */; };
 		FA97BF501BBDCCC4002E8197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97BF4F1BBDCCC4002E8197 /* ViewController.swift */; };
@@ -433,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA97BF6E1BBDCCC4002E8197 /* Home_Test_4UITests.swift in Sources */,
+				E8EBB0231BD6B91A00E8A8A0 /* Home_Test_4Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

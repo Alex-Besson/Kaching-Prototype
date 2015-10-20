@@ -364,6 +364,9 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="7bl-HL-kgi" kind="show" identifier="login" id="Ftf-3U-EgK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PQP-kU-MzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
