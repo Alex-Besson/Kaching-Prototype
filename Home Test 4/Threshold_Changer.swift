@@ -10,7 +10,7 @@ import UIKit
 
 class Threshold_Changer: NSObject {
     
-    
+    var userCommit = [Float]()
     
 
     func addUserToItem(userID:String,myItemID:String,currCommit:Float) {
@@ -63,12 +63,78 @@ class Threshold_Changer: NSObject {
             
         }
         
-        
-        
-        
-                
-        
         }
+    
+    func sendToMain (myItemID:String) {
+        
+        
+        let query = PFQuery(className: "UserToItem")
+        
+        
+        query.whereKey("currentItem", equalTo: myItemID)
+        
+            query.findObjectsInBackgroundWithBlock { (object, error) -> Void in 
+        
+        
+            if error == nil {
+                guard let commits = object else { return }
+                var values = [Float]()
+                for commit in commits {
+                    guard let userCommit = commit.objectForKey("UserCommit") as? Float else { return}
+                    values.append(userCommit)
+                    print(values)
+                }
+              let sum = values.reduce(0, combine: +)
+               self.sendingCommits(myItemID, change: sum)
+                
+            }
+            
+        }
+        
+    }
+    
+    func sendingCommits (myItemID:String,change:Float) {
+        
+       
+        let query = PFQuery(className: "ItemList")
+        
+        
+        query.whereKey("objectId", equalTo: myItemID)
+        query.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
+            
+            if error == nil {
+                guard let product = object else { return }
+                
+                
+                
+                product.setObject(change, forKey: "CurrentCommit")
+                product.saveInBackground()
+                
+            }
+            
+        }
+        
+    }
+    
+    
+//    func getMyUserCommit (userID:String,itemID:String) {
+//        let query = PFQuery(className: "UserToITem")
+//        query.whereKey("username", containsString: userID)
+//        query.whereKey("currentItem", containsString: itemID)
+//        query.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
+//            if error == nil {
+//                guard let myCommit = object?.objectForKey("UserCommit") as? Float else {return}
+//                let defaults = NSUserDefaults.standardUserDefaults()
+//                
+//                defaults.s
+//                defaults.synchronize()
+//                
+//                
+//            }
+//        }
+//        
+//    }
+    
 }
 
 

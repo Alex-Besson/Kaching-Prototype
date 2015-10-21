@@ -17,6 +17,8 @@ class TemporaryDetailViewController: UIViewController {
     var product: Parse_ProductModel!
     
     var counter:Float = 0
+    
+    
     let commitChanger = Threshold_Changer()
     
     let lblTitle = UILabel()
@@ -52,24 +54,31 @@ class TemporaryDetailViewController: UIViewController {
     // VIEW DID LOAD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        guard let itemCommit = product.currentCommit else
+        {
+            return
+        }
         
+        counter = itemCommit
      
+        
+        
         if PFUser.currentUser() != nil {
             
-            guard let username = currentUser?.objectId else {return}
-            guard let itemCommit = product.currentCommit else
-            {
-                return
-            }
+            guard let username = PFUser.currentUser()!.objectId else {return}
+            
+            
             guard let myitemID = product.itemId else {return}
             
                 
-            
+        
+                
             self.commitChanger.addUserToItem(username, myItemID: myitemID, currCommit: itemCommit)
             
             
             btnLogOut.hidden = false
             configureLogOutButton()
+           
             if counter > 0 {
             btnImOut.hidden = false
             configureImOutButton()
@@ -83,7 +92,10 @@ class TemporaryDetailViewController: UIViewController {
         
     }
     
-  
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.commitChanger.sendToMain(product.itemId!)
+    }
     
     
     override func viewDidLoad() {
@@ -102,7 +114,7 @@ class TemporaryDetailViewController: UIViewController {
 
         
         
-        counter = itemCommit
+        
         
         pBarCommitProgress.ChangeProgressBar(itemCommit, threshold: itemThreshold)
         
@@ -293,13 +305,20 @@ class TemporaryDetailViewController: UIViewController {
             
         } else {
             
-           
+        
         counter++
         
-        
+            if counter > 0 {
+                btnImOut.hidden = false
+                configureImOutButton()
+                
+                
+            }
         guard let itemID = product.itemId else {return}
             
             guard let user = currentUser?.objectId else {return}
+//            var userCommit =   counter - product.currentCommit!
+            
         
         commitChanger.change(user, myItemID: itemID, change: counter)
         
@@ -427,8 +446,14 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func clearPBar(sender:UIButton!) {
-        counter = 0
-        pBarCommitProgress.ChangeProgressBar(counter, threshold: product.threshold!)
+        guard let itemCommit = product.currentCommit else
+        {
+        return
+        }
+        counter = itemCommit - counter
+        
+        var actualPBar = itemCommit + counter
+        pBarCommitProgress.ChangeProgressBar(actualPBar, threshold: product.threshold!)
         
         guard let itemID = product.itemId else {return}
         guard let user = currentUser?.objectId else {return}
