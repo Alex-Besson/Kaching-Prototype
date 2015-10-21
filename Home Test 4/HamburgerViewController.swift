@@ -10,13 +10,15 @@ import UIKit
 
 class HamburgerViewController: UIViewController {
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureColors()
+    }
+    
+    func configureColors() {
+        self.view.backgroundColor = CustomColors.getDescriptionTextColor()
     }
 
     override func didReceiveMemoryWarning() {

@@ -42,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getTitleTextColor(), searchBarTintColor: UIColor.clearColor())
         
         customSearchController.customSearchBar.placeholder = "Search here..."
         tblSearchResults.tableHeaderView = customSearchController.customSearchBar
@@ -63,7 +63,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
   
-  
+  // VIEW DID LOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,15 +72,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
        loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
-            configureCustomSearchController()
         
-
+        configureCustomSearchController()
+        tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
+        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
+    }
     
-    
-    
-    
+    // TABLE VIEW FUNCTIONS
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
@@ -123,6 +126,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
     
+    // SEARCH BAR FUNCTIONS
     
     func didStartSearching() {
         shouldShowSearchResults = true

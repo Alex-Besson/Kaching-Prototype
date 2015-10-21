@@ -28,7 +28,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getTitleTextColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getTitleTextColor()
         
+        
+
     }
     
     func open() {
@@ -44,6 +50,14 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func configureColors() {
+        self.view.backgroundColor = CustomColors.getDescriptionTextColor()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+
+            }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
