@@ -113,7 +113,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.Product_RetailPrice.text = "Was: $\(product.retailPrice!)"
         cell.Product_DiscountPrice.text = "Now: $\(product.discountPrice!)"
     
-       
+    
         
         
         cell.Product_ProgressBar.ChangeProgressBar(product.currentCommit!, threshold: product.threshold!)
