@@ -41,12 +41,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getPriceLabelColor(), searchBarTintColor: CustomColors.getTitleTextColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getTitleTextColor(), searchBarTintColor: UIColor.clearColor())
         
         customSearchController.customSearchBar.placeholder = "Search here..."
-        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+//        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+//        self.view.addSubview(customSearchController.customSearchBar)
+        
+        
+//        self.navigationItem.titleView = customSearchController.customSearchBar
+//        self.navigationController?.navigationBar.addSubview(customSearchController.customSearchBar)
+//
+//        self.definesPresentationContext = true
         
         customSearchController.customDelegate = self
+        tblSearchResults.backgroundColor = CustomColors.getViewBackgroundColor()
+        tblSearchResults.tintColor = CustomColors.getViewBackgroundColor()
+        customSearchController.customSearchBar.backgroundColor = UIColor.clearColor()
+        print("The nav bar height is \(self.navigationController?.navigationBar.frame.height)")
+        
     }
 
     
@@ -68,12 +80,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
-            configureCustomSearchController()
+        
+        configureCustomSearchController()
         tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
-
+        
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
+    }
     
     // TABLE VIEW FUNCTIONS
     

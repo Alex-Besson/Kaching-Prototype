@@ -13,11 +13,8 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
+        self.tableView.rowHeight = 128
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,9 +36,17 @@ class FavoritesTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FavoritesCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("FavoritesCell", forIndexPath: indexPath) as! HomeViewTableViewCell
 
-        // Configure the cell...
+        
+        let instanceOfCustomCell = HomeViewTableViewCell()
+        
+        cell.lblTitle.text = instanceOfCustomCell.setLabelText()
+        cell.lblTitle.frame = CGRectMake(0,-10, 100, 100)
+        
+        cell.lblDiscountPrice.text = "12 dorra"
+        cell.lblDiscountPrice.frame = CGRectMake(0, 10, 100, 100)
+
 
         return cell
     }
