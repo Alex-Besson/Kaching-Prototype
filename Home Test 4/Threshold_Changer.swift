@@ -10,7 +10,7 @@ import UIKit
 
 class Threshold_Changer: NSObject {
     
-
+    
     
 
     func addUserToItem(userID:String,myItemID:String,currCommit:Float) {
