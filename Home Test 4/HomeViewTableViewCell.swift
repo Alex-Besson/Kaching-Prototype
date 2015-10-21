@@ -16,9 +16,47 @@ class HomeViewTableViewCell: UITableViewCell {
     @IBOutlet weak var Product_Name: UILabel!
     @IBOutlet weak var Product_RetailPrice: UILabel!
     
+    func configureColor() {
+        self.backgroundColor = CustomColors.getDescriptionTextColor()
+//        self.Product_DiscountPrice.textColor = CustomColors.getPriceLabelColor()
+//        self.Product_RetailPrice.textColor = CustomColors.getPriceLabelColor()
+//        self.Product_Name.textColor = CustomColors.getTitleTextColor()
+    }
+    
+    
+    var lblTitle = UILabel()
+    var lblDiscountPrice = UILabel()
+    var lblRetailPrice = UILabel()
+    
+    var imgProductImage = UIImageView()
+    
+    var pBarCommits = UIProgressView()
+    
+    let stkLabelStack = UIStackView()
+    
+    
+    func configureCellElements() {
+        self.stkLabelStack.addSubview(lblDiscountPrice)
+        self.stkLabelStack.addSubview(lblRetailPrice)
+        self.addSubview(imgProductImage)
+        self.addSubview(pBarCommits)
+        self.stkLabelStack.addSubview(lblTitle)
+        
+        stkLabelStack.frame = CGRectMake(200, 10, 200, 90)
+        pBarCommits.frame = CGRectMake(self.bounds.width - 128, self.bounds.height - 28, 118, 10)
+    }
+    
+    func setLabelText() -> String {
+        return "Hello, World!"
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        configureColor()
+        configureCellElements()
+        self.addSubview(stkLabelStack)
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

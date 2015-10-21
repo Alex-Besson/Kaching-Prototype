@@ -13,10 +13,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var usernameEntry: UITextField!
     @IBOutlet weak var passwordEntry: UITextField!
     
-//    @IBOutlet weak var usernameLabel: UILabel!
-//    @IBOutlet weak var passwordLabel: UILabel!
+   
+
     
-    var loginDefaults = NSUserDefaults.standardUserDefaults()
+ 
     
     func callSignup() {
         let userInfo = PFUser()
@@ -27,6 +27,7 @@ class LoginVC: UIViewController {
                 print("user info")
             } else {
                 print("login successful")
+                
             }
             
         }
@@ -58,14 +59,11 @@ class LoginVC: UIViewController {
         let userInfo = PFUser()
         userInfo.username = usernameEntry.text!
         userInfo.password = passwordEntry.text!
-        userInfo.signUpInBackgroundWithBlock { (succedded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                print("user info")
-            } else {
-                print("login successful")
-            }
-            
-        }
+        PFUser.logInWithUsernameInBackground(userInfo.username!, password: userInfo.password!)
+        
+        
+        
+        
         
     }
 }

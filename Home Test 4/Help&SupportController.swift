@@ -14,6 +14,8 @@ class Help_SupportController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = CustomColors.getViewBackgroundColor()
     }
 
     override func didReceiveMemoryWarning() {

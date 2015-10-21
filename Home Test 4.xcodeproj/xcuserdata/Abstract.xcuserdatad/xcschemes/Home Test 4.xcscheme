@@ -48,6 +48,26 @@
                ReferencedContainer = "container:Home Test 4.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E88B9BA11BD74CF90020322D"
+               BuildableName = "Home Test 4FinalTest.xctest"
+               BlueprintName = "Home Test 4FinalTest"
+               ReferencedContainer = "container:Home Test 4.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E88B9BB01BD74ECD0020322D"
+               BuildableName = "Home Test 4T.xctest"
+               BlueprintName = "Home Test 4T"
+               ReferencedContainer = "container:Home Test 4.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

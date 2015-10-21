@@ -4,6 +4,7 @@
 target 'Home Test 4' do
 
 pod 'Parse'
+pod 'ParseUI'
 
 end
 
