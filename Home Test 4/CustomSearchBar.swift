@@ -56,7 +56,7 @@ class CustomSearchBar: UISearchBar {
             searchField.backgroundColor = barTintColor
         }
         
-        let startPoint = CGPointMake(0.0, frame.size.height)
+        let startPoint = CGPointMake(0.0, 0)//frame.size.height)
         let endPoint = CGPointMake(frame.size.width, frame.size.height)
         let path = UIBezierPath()
         path.moveToPoint(startPoint)

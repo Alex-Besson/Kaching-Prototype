@@ -44,8 +44,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func configureCustomSearchController() {
         customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getTitleTextColor(), searchBarTintColor: UIColor.clearColor())
         
+        
         customSearchController.customSearchBar.placeholder = "Search here..."
-        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+//        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
        
         customSearchController.customDelegate = self
         
@@ -69,18 +70,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         print(navigationController?.navigationBar.frame.size.height)
-       loadData()
+        loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
+        tblSearchResults.rowHeight = 126
         
-        configureCustomSearchController()
+//        configureCustomSearchController()
         tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
         
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        configureCustomSearchController()
         self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
+        
     }
     
     // TABLE VIEW FUNCTIONS
