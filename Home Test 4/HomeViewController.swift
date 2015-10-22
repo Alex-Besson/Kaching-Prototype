@@ -42,12 +42,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getTitleTextColor(), searchBarTintColor: UIColor.clearColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getViewBackgroundColor(), searchBarTintColor: CustomColors.getNavigationBarColor())
         
         customSearchController.customSearchBar.placeholder = "Search here..."
         tblSearchResults.tableHeaderView = customSearchController.customSearchBar
        
         customSearchController.customDelegate = self
+//        customSearchController.customSearchBar.
         
         
     }
@@ -69,12 +70,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         print(navigationController?.navigationBar.frame.size.height)
-       loadData()
+        loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
         
         configureCustomSearchController()
-        tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
+        tblSearchResults.separatorColor = CustomColors.getNavigationBarColor()
+        tblSearchResults.backgroundColor = CustomColors.getViewBackgroundColor()
+        customSearchController.customSearchBar.backgroundColor = UIColor.clearColor()
+        
         
     }
     

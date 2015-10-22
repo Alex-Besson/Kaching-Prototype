@@ -13,8 +13,12 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
+        
         self.tableView.rowHeight = 128
+        
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavigationBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavigationBarColor()
     }
 
     override func didReceiveMemoryWarning() {

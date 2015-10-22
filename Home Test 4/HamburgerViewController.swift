@@ -15,6 +15,7 @@ class HamburgerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         configureColors()
+        view.backgroundColor = CustomColors.getHamBarColor()
     }
     
     func configureColors() {

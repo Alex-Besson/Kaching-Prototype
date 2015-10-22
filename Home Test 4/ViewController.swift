@@ -30,10 +30,24 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 //        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = CustomColors.getTitleTextColor()
-        self.navigationController?.navigationBar.backgroundColor = CustomColors.getTitleTextColor()
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavigationBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavigationBarColor()
         
+        let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
+        let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, (navigationController?.navigationBar.bounds.height)!)
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        path.addLineToPoint(endPoint)
         
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = UIColor.yellowColor().CGColor
+        shapeLayer.lineWidth = 2.5
+        
+        navigationController?.navigationBar.layer.addSublayer(shapeLayer)
+        
+//        layer.addSublayer(shapeLayer)
+
 
     }
     

@@ -17,7 +17,7 @@ class HomeViewTableViewCell: UITableViewCell {
     @IBOutlet weak var Product_RetailPrice: UILabel!
     
     func configureColor() {
-        self.backgroundColor = CustomColors.getDescriptionTextColor()
+        self.backgroundColor = CustomColors.getViewBackgroundColor()
 //        self.Product_DiscountPrice.textColor = CustomColors.getPriceLabelColor()
 //        self.Product_RetailPrice.textColor = CustomColors.getPriceLabelColor()
 //        self.Product_Name.textColor = CustomColors.getTitleTextColor()
