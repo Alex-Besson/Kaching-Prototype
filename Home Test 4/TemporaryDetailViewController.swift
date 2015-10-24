@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TemporaryDetailViewController: UIViewController {
+class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 
-    // UI ELEMENTS
+    
     
     var login = LogInViewController()
     
@@ -20,6 +20,10 @@ class TemporaryDetailViewController: UIViewController {
     
     
     let commitChanger = Threshold_Changer()
+    
+    
+    
+    // UI ELEMENTS
     
     let lblTitle = UILabel()
     let lblDescription = UILabel()
@@ -36,13 +40,17 @@ class TemporaryDetailViewController: UIViewController {
     
     let pBarCommitProgress = UIProgressView()
     
+    var scrollView = UIScrollView()
+    var container = UIView()
+    
     
     let currentUser = PFUser.currentUser()
     
     
     
     
-    // VIEW DID LOAD
+    // VIEW DID APPEAR
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         guard let itemCommit = product.currentCommit else
@@ -83,11 +91,14 @@ class TemporaryDetailViewController: UIViewController {
         
     }
     
+    // VIEW DID DISAPPEAR
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.commitChanger.sendToMain(product.itemId!)
     }
     
+    // VIEW DID LOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,14 +114,12 @@ class TemporaryDetailViewController: UIViewController {
 
         
         
-        
-        
         pBarCommitProgress.ChangeProgressBar(itemCommit, threshold: itemThreshold)
         
-        self.view.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
+//        self.view.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         
+        setUpViewAndScrollView()
         
-       
         configureTitleLabel()
         configureDescriptionLabel()
         configureImageView()
@@ -119,6 +128,8 @@ class TemporaryDetailViewController: UIViewController {
         configureCommitButton()
         configureBuyNowButton()
         configureProgressView()
+        configureImOutButton()
+        
         
         
         configureElementColors()
@@ -129,12 +140,36 @@ class TemporaryDetailViewController: UIViewController {
     
     // UI ELEMENTS CONFIGURATION FUNCTIONS
     
-    
+    func setUpViewAndScrollView() {
+        self.view.backgroundColor = CustomColors.getViewBackgroundColor()
+        scrollView.backgroundColor = CustomColors.getViewBackgroundColor()
+        self.view.addSubview(scrollView)
+        
+//        self.scrollView = UIScrollView()
+        self.scrollView.delegate = self
+        
+        
+        scrollView.contentSize = CGSize(width: self.view.bounds.width, height: 700)
+        
+//        scrollView.contentSize = CGSize(width: self.view.bounds.width, height: 600)
+        
+        
+        
+        scrollView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+//        scrollView.addSubview(container)
+//        container.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+//        container.backgroundColor = CustomColors.getViewBackgroundColor()
+//        container.userInteractionEnabled = true
+        scrollView.userInteractionEnabled = true
+        
+        
+    }
     
     
     func configureTitleLabel() {
-        lblTitle.frame = CGRectMake(self.view.bounds.width / 2 - 150, 30, 300, 100)
-        self.view.addSubview(lblTitle)
+        lblTitle.frame = CGRectMake(self.view.bounds.width / 2 - 150, self.view.bounds.width / 20, 300, self.view.bounds.height / 20)
+//        self.view.addSubview(lblTitle)
+        self.scrollView.addSubview(lblTitle)
         lblTitle.text = product.itemName!
         lblTitle.textAlignment = NSTextAlignment.Center
 //        lblTitle.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1)
@@ -144,8 +179,15 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func configureDescriptionLabel() {
-        self.view.addSubview(lblDescription)
-        lblDescription.frame = CGRectMake(self.view.bounds.width / 2 - 168, self.view.bounds.height / 2 - 50, 336, 220)
+//        self.view.addSubview(lblDescription)
+        self.scrollView.addSubview(lblDescription)
+        
+        let descriptionWidth = self.view.bounds.width - 40
+        let descriptionHeight = descriptionWidth / 2
+        let tenthOfView = self.view.bounds.height / 10
+        
+        
+        lblDescription.frame = CGRectMake(self.view.bounds.width / 2 - descriptionWidth / 2, descriptionHeight + tenthOfView + 10, descriptionWidth, descriptionHeight)
         lblDescription.text = product.itemDescription
         lblDescription.font = UIFont(name: "Helvetica Neue", size: 14)
         
@@ -161,8 +203,14 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func configureImageView() {
-        self.view.addSubview(imgItemImage)
-        imgItemImage.frame = CGRectMake(self.view.bounds.width / 2 - 168, 100, 336, 170)
+//        self.view.addSubview(imgItemImage)
+        self.scrollView.addSubview(imgItemImage)
+        
+        let imageWidth = self.view.bounds.width - 40
+        let viewHeight = self.view.bounds.height
+        let tenthOfView = viewHeight / 10
+        
+        imgItemImage.frame = CGRectMake(self.view.bounds.width / 2 - imageWidth / 2, tenthOfView, imageWidth, imageWidth / 2)
         imgItemImage.imageFromUrl(product.itemImageURL!)
         imgItemImage.layer.cornerRadius = 10
         imgItemImage.clipsToBounds = true
@@ -171,8 +219,14 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func configureDiscountPriceLabel() {
-        self.view.addSubview(lblDiscountPrice)
-        lblDiscountPrice.frame = CGRectMake(self.view.bounds.width / 2 - 168, 500, 200, 50)
+//        self.view.addSubview(lblDiscountPrice)
+        self.scrollView.addSubview(lblDiscountPrice)
+        
+        let tenthOfView = self.view.bounds.height / 10
+        let imageViewWidth = self.view.bounds.width - 40
+        let imageViewHeight = (self.view.bounds.width - 40) / 2
+        
+        lblDiscountPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2, imageViewHeight * 2 + tenthOfView + 10, 200, 50)
         lblDiscountPrice.text = "Discount Price: $\(product.discountPrice!)"
         lblDiscountPrice.textAlignment = NSTextAlignment.Left
         lblDiscountPrice.font = UIFont(name: "Helvetica Neue", size: 17)
@@ -181,8 +235,15 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func configureRetailPriceLabel() {
-        self.view.addSubview(lblRetailPrice)
-        lblRetailPrice.frame = CGRectMake(self.view.bounds.width / 2 - 168, 540, 200, 50)
+//        self.view.addSubview(lblRetailPrice)
+        self.scrollView.addSubview(lblRetailPrice)
+        
+        let tenthOfView = self.view.bounds.height / 10
+        let imageViewWidth = self.view.bounds.width - 40
+        let imageViewHeight = (self.view.bounds.width - 40) / 2
+        
+        
+        lblRetailPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2, imageViewHeight * 2 + tenthOfView + 40, 200, 50)
         lblRetailPrice.text = "Retail Price: $\(product.retailPrice!)"
         lblRetailPrice.textAlignment = NSTextAlignment.Left
         lblRetailPrice.font = UIFont(name: "Helvetica Neue", size: 17)
@@ -191,9 +252,12 @@ class TemporaryDetailViewController: UIViewController {
     }
     
     func configureCommitButton() {
-        self.view.addSubview(btnCommit)
+//        self.view.addSubview(btnCommit)
+        self.scrollView.addSubview(btnCommit)
+        
         btnCommit.frame = CGRectMake(self.view.bounds.width - 90, 510, 70, 30)
         btnCommit.setTitle("Commit!", forState: UIControlState.Normal)
+        btnCommit.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnCommit.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal)
         btnCommit.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         btnCommit.layer.borderColor = UIColor.greenColor().CGColor
@@ -252,9 +316,12 @@ class TemporaryDetailViewController: UIViewController {
     
     
     func configureBuyNowButton() {
-        self.view.addSubview(btnBuyNow)
+//        self.view.addSubview(btnBuyNow)
+        scrollView.addSubview(btnBuyNow)
+        
         btnBuyNow.frame = CGRectMake(self.view.bounds.width - 90, 550, 70, 30)
         btnBuyNow.setTitle("Buy Now!", forState: UIControlState.Normal)
+        btnBuyNow.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnBuyNow.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
         btnBuyNow.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         btnBuyNow.layer.borderColor = UIColor.redColor().CGColor
@@ -269,7 +336,8 @@ class TemporaryDetailViewController: UIViewController {
     
     func configureLogOutButton() {
         
-        self.view.addSubview(btnLogOut)
+//        self.view.addSubview(btnLogOut)
+        scrollView.addSubview(btnLogOut)
         
         btnLogOut.frame = CGRectMake(self.view.bounds.width - 80, 610, 70, 30)
         
@@ -310,26 +378,21 @@ class TemporaryDetailViewController: UIViewController {
     
     
     func configureProgressView() {
-        
-        
+        scrollView.addSubview(pBarCommitProgress)
         
         pBarCommitProgress.frame = CGRectMake(self.view.bounds.width / 2 - 150, 600, 300, 100)
         
         self.pBarCommitProgress.transform = CGAffineTransformScale(self.pBarCommitProgress.transform, 1, 5)
-        
-
-        
-        self.view.addSubview(pBarCommitProgress)
-        
-       
-        
-        
+    
     }
     
     func configureImOutButton() {
-        self.view.addSubview(btnImOut)
-        btnImOut.frame = CGRectMake(self.view.bounds.width / 2 - 35, 615, 70, 30)
+//        self.view.addSubview(btnImOut)
+        scrollView.addSubview(btnImOut)
+        
+        btnImOut.frame = CGRectMake(self.view.bounds.width / 2 - 35, 560, 70, 30)
         btnImOut.setTitle("I'm Out", forState: UIControlState.Normal)
+        btnImOut.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnImOut.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
         btnImOut.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         btnImOut.layer.borderColor = UIColor.redColor().CGColor
@@ -347,7 +410,7 @@ class TemporaryDetailViewController: UIViewController {
         }
         counter = itemCommit - counter
         
-        var actualPBar = itemCommit + counter
+        let actualPBar = itemCommit + counter
         pBarCommitProgress.ChangeProgressBar(actualPBar, threshold: product.threshold!)
         
         guard let itemID = product.itemId else {return}
