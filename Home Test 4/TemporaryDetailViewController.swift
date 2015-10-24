@@ -59,10 +59,10 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         counter = itemCommit
-     
+     btnImOut.hidden = true
         
         
-        if PFUser.currentUser() != nil {
+        if PFUser.currentUser()?.objectId != nil {
             
             guard let username = PFUser.currentUser()!.objectId else {return}
             
@@ -96,6 +96,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.commitChanger.sendToMain(product.itemId!)
+        
     }
     
     // VIEW DID LOAD
