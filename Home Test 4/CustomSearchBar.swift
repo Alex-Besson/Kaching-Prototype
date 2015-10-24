@@ -48,7 +48,7 @@ class CustomSearchBar: UISearchBar {
         if let index = indexOfSearchFieldInSubviews() {
             let searchField: UITextField = (subviews[0] ).subviews[index] as! UITextField
             
-            searchField.frame = CGRectMake(5.0, 5.0, frame.size.width - 10.0, frame.size.height - 10.0)
+            searchField.frame = CGRectMake(5.0, 5.0, frame.size.width - 70.0, frame.size.height - 10.0)
             
             searchField.font = preferredFont
             searchField.textColor = preferredTextColor
@@ -56,19 +56,19 @@ class CustomSearchBar: UISearchBar {
             searchField.backgroundColor = barTintColor
         }
         
-        let startPoint = CGPointMake(0.0, 0)//frame.size.height)
-        let endPoint = CGPointMake(frame.size.width, frame.size.height)
-        let path = UIBezierPath()
-        path.moveToPoint(startPoint)
-        path.addLineToPoint(endPoint)
-        
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.CGPath
-        shapeLayer.strokeColor = preferredTextColor.CGColor
-        shapeLayer.lineWidth = 0//2.5
-        
-        layer.addSublayer(shapeLayer)
-        
+//        let startPoint = CGPointMake(0.0, frame.size.height)
+//        let endPoint = CGPointMake(frame.size.width, frame.size.height)
+//        let path = UIBezierPath()
+//        path.moveToPoint(startPoint)
+//        path.addLineToPoint(endPoint)
+//        
+//        let shapeLayer = CAShapeLayer()
+//        shapeLayer.path = path.CGPath
+//        shapeLayer.strokeColor = preferredTextColor.CGColor
+//        shapeLayer.lineWidth = 0//2.5
+//        
+//        layer.addSublayer(shapeLayer)
+//        
         super.drawRect(rect)
     }
 

@@ -157,6 +157,7 @@ class TemporaryDetailViewController: UIViewController {
         lblDescription.layer.cornerRadius = 10
         lblDescription.clipsToBounds = true
         
+        
     }
     
     func configureImageView() {

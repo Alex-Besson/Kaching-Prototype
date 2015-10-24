@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 18)!, NSForegroundColorAttributeName: CustomColors.getButtonColor()
+        ]
+        
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: CustomColors.getButtonColor()]
+
+        
         Parse.setApplicationId("BurmTrwbikjoafdVpMjWWOJS7J6nj1YqP2N7LAmh", clientKey: "Hwdjjkx7jgcDfzzQHH8SOcbXzcaiWKF3OfjcTLTZ")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
 

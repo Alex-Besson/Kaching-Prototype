@@ -127,6 +127,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnHamburgerButton" destination="L2i-qb-Ki0" id="RWN-8v-Rpn"/>
                         <outlet property="hamLeftConstraint" destination="Fmd-yS-x8J" id="ot1-h1-1Uh"/>
                     </connections>
                 </viewController>
@@ -494,6 +495,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrM-Hq-ynG">
                                 <rect key="frame" x="87" y="172" width="86" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="My Commits"/>
                                 <connections>
                                     <segue destination="Vln-5W-Smc" kind="presentation" id="3te-Zc-Dpn"/>
@@ -502,14 +504,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s12-Tl-JdT">
                                 <rect key="frame" x="87" y="252" width="87" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="My Favorites"/>
                                 <connections>
                                     <segue destination="h4K-np-ah3" kind="presentation" id="dCg-yL-1C5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26p-ka-dFM">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26p-ka-dFM">
                                 <rect key="frame" x="105" y="336" width="50" height="30"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="History"/>
                                 <connections>
                                     <segue destination="yba-cY-GoS" kind="presentation" id="j2U-mR-69r"/>
@@ -522,30 +526,30 @@
                                     <constraint firstAttribute="height" constant="132" id="Q0p-6w-rez"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-yY-Vtu">
-                                <rect key="frame" x="160" y="489" width="88" height="27"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="gLG-Ic-An5"/>
-                                    <constraint firstAttribute="width" constant="88" id="ogr-ZG-W9N"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Help &amp; Support"/>
-                                <connections>
-                                    <segue destination="4da-T3-w9v" kind="show" id="KzQ-tl-yfh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uq1-gy-pd3">
-                                <rect key="frame" x="16" y="489" width="53" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uq1-gy-pd3">
+                                <rect key="frame" x="20" y="489" width="61" height="27"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Fya-hq-oYX"/>
                                     <constraint firstAttribute="width" constant="53" id="Lxe-QD-5Be"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="About Us"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <state key="normal" title="Contact Us"/>
                                 <connections>
                                     <segue destination="26Y-jH-bWh" kind="show" id="TxN-v8-7pf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-yY-Vtu">
+                                <rect key="frame" x="152" y="489" width="88" height="27"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="gLG-Ic-An5"/>
+                                    <constraint firstAttribute="width" constant="88" id="ogr-ZG-W9N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="4da-T3-w9v" kind="show" id="KzQ-tl-yfh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -573,6 +577,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="btnContactUs" destination="Uq1-gy-pd3" id="KAH-Dg-dCl"/>
+                        <outlet property="btnHistory" destination="26p-ka-dFM" id="QEB-UM-lbt"/>
+                        <outlet property="btnMyCommits" destination="VrM-Hq-ynG" id="xNk-kE-Mlq"/>
+                        <outlet property="btnMyFavorites" destination="s12-Tl-JdT" id="1eC-JY-SF3"/>
+                        <outlet property="btnSettings" destination="Z2v-yY-Vtu" id="G6e-b9-qmT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8B-gw-gPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

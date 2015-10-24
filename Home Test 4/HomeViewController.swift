@@ -42,13 +42,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getTitleTextColor(), searchBarTintColor: UIColor.clearColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getButtonColor(), searchBarTintColor: CustomColors.getNavBarColor())
         
-        
+        customSearchController.customSearchBar.backgroundColor = UIColor.clearColor()
         customSearchController.customSearchBar.placeholder = "Search here..."
+        
+//        customSearchController.customSearchBar.setPositionAdjustment(UIOffsetMake(0, 0), forSearchBarIcon: .Search)
 //        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
-       
+//        customSearchController.customSearchBar.setScopeBarButtonTitleTextAttributes(["Search" : "lol"], forState: UIControlState.Normal)
+//        customSearchController.customSearchBar.
+        
         customSearchController.customDelegate = self
+//        customSearchController.customSearchBar.showsCancelButton = false
+        
+        
         
         
     }
@@ -73,16 +80,37 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
-        tblSearchResults.rowHeight = 126
+        tblSearchResults.rowHeight = 128
+        tblSearchResults.backgroundColor = CustomColors.getViewBackgroundColor()
         
 //        configureCustomSearchController()
         tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
         
+        configureCustomSearchController()
+        
+        // // //
+        
+        let textfield:UITextField = customSearchController.customSearchBar.valueForKey("searchField") as! UITextField
+        
+        //Set the foregroundcolor of the placeholder
+        let attributedString = NSAttributedString(string: "Search...", attributes: [NSForegroundColorAttributeName : CustomColors.getButtonColor()])
+        
+        textfield.attributedPlaceholder = attributedString
+
+        //Get the glass icon
+        let iconView:UIImageView = textfield.leftView as! UIImageView
+        //Make the icon to a template which you can edit
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        //Set the color of the icon
+        iconView.tintColor = CustomColors.getButtonColor()
+//        customSearchControll
+        
     }
+    
+    // VIEW DID APPEAR
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        configureCustomSearchController()
         self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
         
     }

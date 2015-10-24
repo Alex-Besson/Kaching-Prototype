@@ -13,8 +13,25 @@ class FavoritesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
+//        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
         self.tableView.rowHeight = 128
+        
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
+        
+        let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
+        let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, ((navigationController?.navigationBar.bounds.height)!))
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        path.addLineToPoint(endPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        navigationController?.navigationBar.layer.addSublayer(shapeLayer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +66,10 @@ class FavoritesTableViewController: UITableViewController {
 
 
         return cell
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
     }
     
 

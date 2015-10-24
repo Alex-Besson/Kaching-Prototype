@@ -25,15 +25,37 @@ class ViewController: UIViewController {
         hamIsOpen = !hamIsOpen
     }
     
+    @IBOutlet weak var btnHamburgerButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = CustomColors.getTitleTextColor()
-        self.navigationController?.navigationBar.backgroundColor = CustomColors.getTitleTextColor()
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
         
+        let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
+        let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, ((navigationController?.navigationBar.bounds.height)!))
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        path.addLineToPoint(endPoint)
         
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        navigationController?.navigationBar.layer.addSublayer(shapeLayer)
+        
+        navigationController?.navigationItem.leftBarButtonItem?.tintColor = CustomColors.getButtonColor()
+        
+        btnHamburgerButton.tintColor = CustomColors.getButtonColor()
+        
+        let rightButton = UIBarButtonItem()
+        rightButton.tintColor = CustomColors.getButtonColor()
+        
+
 
     }
     
@@ -52,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     func configureColors() {
-        self.view.backgroundColor = CustomColors.getDescriptionTextColor()
+        self.view.backgroundColor = CustomColors.getViewBackgroundColor()
     }
     
     override func viewDidAppear(animated: Bool) {

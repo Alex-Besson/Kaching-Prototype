@@ -13,11 +13,22 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
+        
+        let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
+        let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, ((navigationController?.navigationBar.bounds.height)!))
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        path.addLineToPoint(endPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        navigationController?.navigationBar.layer.addSublayer(shapeLayer)
     }
 
     override func didReceiveMemoryWarning() {

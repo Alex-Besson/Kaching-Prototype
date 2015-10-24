@@ -18,10 +18,29 @@ class MyCommitsTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         
-        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
+//        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
         self.tableView.rowHeight = 128
         
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
+        self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
         
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 10)!]
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CustomColors.getButtonColor()]
+        
+        
+        let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
+        let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, ((navigationController?.navigationBar.bounds.height)!))
+        let path = UIBezierPath()
+        path.moveToPoint(startPoint)
+        path.addLineToPoint(endPoint)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.CGPath
+        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        navigationController?.navigationBar.layer.addSublayer(shapeLayer)
 
     }
     

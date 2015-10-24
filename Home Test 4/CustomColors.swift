@@ -14,7 +14,7 @@ class CustomColors {
     
     
     class func getTitleTextColor() -> UIColor {
-        return UIColor(red: 25/255, green: 52/255, blue: 65/255, alpha: 1) //UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
+        return UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
     }
     
     class func getViewBackgroundColor() -> UIColor {
@@ -22,7 +22,7 @@ class CustomColors {
     }
     
     class func getDescriptionTextColor() -> UIColor {
-        return UIColor(red: 209/255, green: 219/255, blue: 189/255, alpha: 1)//UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+        return UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
     }
     
     class func getDescriptionBackgroundColor() -> UIColor {
@@ -33,6 +33,16 @@ class CustomColors {
         return UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
     }
     
+    class func getNavBarColor() -> UIColor {
+        return UIColor(red: 25/255, green: 52/255, blue: 65/255, alpha: 1)
+    }
     
+    class func getHamMenuColor() -> UIColor {
+        return UIColor(red: 209/255, green: 219/255, blue: 189/255, alpha: 1)
+    }
+    
+    class func getButtonColor() -> UIColor {
+        return UIColor(red: 242/255, green: 227/255, blue: 148/255, alpha: 1)
+    }
 
 }

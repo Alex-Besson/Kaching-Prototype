@@ -10,15 +10,30 @@ import UIKit
 
 class HamburgerViewController: UIViewController {
     
+    @IBOutlet weak var btnMyCommits: UIButton!
+    @IBOutlet weak var btnMyFavorites: UIButton!
+    @IBOutlet weak var btnHistory: UIButton!
+    @IBOutlet weak var btnContactUs: UIButton!
+    @IBOutlet weak var btnSettings: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         configureColors()
+        configureHamButtons()
     }
     
     func configureColors() {
         self.view.backgroundColor = CustomColors.getDescriptionTextColor()
+    }
+    
+    func configureHamButtons() {
+        btnMyCommits.setTitleColor(CustomColors.getTitleTextColor(), forState: UIControlState.Normal)
+        btnMyFavorites.setTitleColor(CustomColors.getTitleTextColor(), forState: UIControlState.Normal)
+        btnHistory.setTitleColor(CustomColors.getTitleTextColor(), forState: UIControlState.Normal)
+        btnContactUs.setTitleColor(CustomColors.getTitleTextColor(), forState: UIControlState.Normal)
+        btnSettings.setTitleColor(CustomColors.getTitleTextColor(), forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
