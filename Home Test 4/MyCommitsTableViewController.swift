@@ -10,8 +10,6 @@ import UIKit
 
 class MyCommitsTableViewController: UITableViewController {
     
-//    var itemsToPass : [Parse_ProductModel] = [specificItem]
-//    var specificItem : Parse_ProductModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +17,7 @@ class MyCommitsTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         
 //        tableView.registerNib(UINib(nibName: "HomeViewTableViewCell", bundle:nil), forCellReuseIdentifier: "MyCommitCell")
-        self.tableView.rowHeight = 128
+        self.tableView.rowHeight = self.view.bounds.height / 5
         
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
@@ -71,36 +69,42 @@ class MyCommitsTableViewController: UITableViewController {
         
         
         let instanceOfCustomCell = HomeViewTableViewCell()
+        let imageViewWidth = cell.bounds.height - 10
+//        let pBarWidth = cell.bounds.width / 3
+        let stackWidth = cell.bounds.width / 3
+        let stackHeight = cell.bounds.height - 50
+        
+        let cellHeight = cell.bounds.height
+//        let halfOfCellHeight = cell.bounds.height / 2
+        let thirdOfCellHeight = cell.bounds.height / 3
+        let tenthOfCellHeight = cell.bounds.height / 10
+        
+        let pBarWidth = (cell.bounds.width + cellHeight) / 3
+        
+        
         
         cell.lblTitle.text = instanceOfCustomCell.setLabelText()
-        
         cell.lblTitle.frame = CGRectMake(0, 0, 130, 18)
         
-        cell.lblDiscountPrice.text = "12 dorra"
+        cell.lblDiscountPrice.text = "discount price"
         cell.lblDiscountPrice.frame = CGRectMake(0, 26, 130, 18)
         
-        cell.lblRetailPrice.text = "16 dorra u buy now!"
+        cell.lblRetailPrice.text = "retail price"
         cell.lblRetailPrice.frame = CGRectMake(0, 54, 160, 17)
         
-        cell.imgProductImage.frame = CGRectMake(10, 10, 130, 108)
+        cell.imgProductImage.frame = CGRectMake(5, 5, cell.bounds.height - 10, cell.bounds.height - 10)
         cell.imgProductImage.image = UIImage(named: "SignIn.jpg")
         
         cell.pBarCommits.progressTintColor = UIColor.greenColor()
         cell.pBarCommits.trackTintColor = UIColor.redColor()
-        cell.pBarCommits.frame = CGRectMake(cell.bounds.width - 148, cell.bounds.height - 28, 118, 10)
         
+        cell.pBarCommits.frame = CGRectMake(imageViewWidth + 10 + (cell.bounds.width - imageViewWidth - 10) / 2 - pBarWidth / 2, cellHeight - tenthOfCellHeight, pBarWidth, 10)
         
+        cell.pBarCommits.transform = CGAffineTransformScale(cell.pBarCommits.transform, 1, 5)
         
-//        self.specificItem?.currentCommit = 10
-//        self.specificItem?.itemId = cell.lblTitle.text
-//        self.specificItem?.itemDescription = "This is a description"
-//        self.specificItem?.itemImageURL = "http://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg"
-//        self.specificItem?.retailPrice = cell.lblRetailPrice.text
-//        self.specificItem?.discountPrice = cell.lblDiscountPrice.text
-//        
-//        
-        
-//        itemsToPass.append(self.specificItem!)
+        cell.stkLabelStack.frame = CGRectMake(imageViewWidth + 20 , tenthOfCellHeight, stackWidth + thirdOfCellHeight, stackHeight)
+    
+//        + (cell.bounds.width - imageViewWidth - 10) / 2 - stackWidth / 2 - thirdOfCellHeight
         
         
         // DO NOT USE IBOUTLETS

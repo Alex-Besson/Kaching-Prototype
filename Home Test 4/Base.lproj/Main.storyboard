@@ -181,7 +181,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="LUS-Xt-HwN">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Ex9-FV-6Hu">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="Ex9-FV-6Hu">
                             <connections>
                                 <segue destination="eVc-8V-ZNY" kind="presentation" id="kRc-nG-BXR"/>
                             </connections>
@@ -469,7 +469,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Commits" id="uEO-0e-1Qf">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="gNX-BY-6Gh">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="gNX-BY-6Gh">
                             <connections>
                                 <segue destination="eVc-8V-ZNY" kind="presentation" id="PvY-AT-K6Y"/>
                             </connections>
@@ -618,7 +618,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="lPZ-Gf-ejG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" id="lPZ-Gf-ejG" customClass="HomeViewTableViewCell" customModule="Home_Test_4" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lPZ-Gf-ejG" id="mHr-PS-Rs2">
@@ -635,7 +635,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="brU-6F-jt2">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="r3c-HQ-g9p">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="r3c-HQ-g9p">
                             <connections>
                                 <segue destination="eVc-8V-ZNY" kind="presentation" id="9zI-e5-BCb"/>
                             </connections>
@@ -689,6 +689,6 @@
         <image name="SignIn.jpg" width="5000" height="5000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PvY-AT-K6Y"/>
+        <segue reference="9zI-e5-BCb"/>
     </inferredMetricsTieBreakers>
 </document>

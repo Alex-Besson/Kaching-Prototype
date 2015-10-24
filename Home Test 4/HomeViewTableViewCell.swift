@@ -42,8 +42,12 @@ class HomeViewTableViewCell: UITableViewCell {
         self.addSubview(pBarCommits)
         self.stkLabelStack.addSubview(lblTitle)
         
+        lblTitle.font = UIFont(name: "Helvetica Neue", size: 20)
+        lblDiscountPrice.font = UIFont(name: "Helvetica Neue", size: 16)
+        lblRetailPrice.font = UIFont(name: "Helvetica Neue", size: 14)
+        
         stkLabelStack.frame = CGRectMake(200, 10, 200, 90)
-        pBarCommits.frame = CGRectMake(self.bounds.width - 128, self.bounds.height - 28, 118, 10)
+//        pBarCommits.frame = CGRectMake(self.bounds.width - 128, self.bounds.height - 28, 118, 10)
     }
     
     func setLabelText() -> String {
