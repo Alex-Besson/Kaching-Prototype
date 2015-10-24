@@ -59,7 +59,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         counter = itemCommit
-     btnImOut.hidden = true
+     
         
         
         if PFUser.currentUser()?.objectId != nil {
@@ -104,7 +104,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        print("viewdidload")
-        
+        btnImOut.hidden = true
         guard let itemThreshold = product.threshold else {
             return
         }
