@@ -88,6 +88,64 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
+        let testPath = UIBezierPath()
+        testPath.moveToPoint(CGPointMake(294.79 / 16, 552.79 / 16))
+        testPath.addCurveToPoint(CGPointMake(218.36 / 16, 485.91 / 16), controlPoint1: CGPointMake(281.02 / 16, 537.35 / 16), controlPoint2: CGPointMake(246.62 / 16, 507.26 / 16))
+        testPath.addCurveToPoint(CGPointMake(89.21 / 16, 382.21 / 16), controlPoint1: CGPointMake(134.61 / 16, 422.67 / 16), controlPoint2: CGPointMake(123.22 / 16, 413.52 / 16))
+        testPath.addCurveToPoint(CGPointMake(0 / 16, 187.87 / 16), controlPoint1: CGPointMake(26.53 / 16, 324.49 / 16), controlPoint2: CGPointMake(-0.09 / 16, 266.51 / 16))
+        testPath.addCurveToPoint(CGPointMake(13.41 / 16, 112.07 / 16), controlPoint1: CGPointMake(0.04 / 16, 149.49 / 16), controlPoint2: CGPointMake(2.66 / 16, 134.71 / 16))
+        testPath.addCurveToPoint(CGPointMake(92.86 / 16, 27.72 / 16), controlPoint1: CGPointMake(31.65 / 16, 73.69 / 16), controlPoint2: CGPointMake(58.51 / 16, 45.16 / 16))
+        testPath.addCurveToPoint(CGPointMake(169.8 / 16, 9.65 / 16), controlPoint1: CGPointMake(117.18 / 16, 15.36 / 16), controlPoint2: CGPointMake(129.18 / 16, 9.87 / 16))
+        testPath.addCurveToPoint(CGPointMake(246.23 / 16, 28.1 / 16), controlPoint1: CGPointMake(212.29 / 16, 9.41 / 16), controlPoint2: CGPointMake(221.24 / 16, 14.37 / 16))
+        testPath.addCurveToPoint(CGPointMake(314.45 / 16, 105.91 / 16), controlPoint1: CGPointMake(276.66 / 16, 44.81 / 16), controlPoint2: CGPointMake(307.97 / 16, 80.54 / 16))
+        testPath.addLineToPoint(CGPointMake(318.45 / 16, 121.58 / 16))
+        testPath.addLineToPoint(CGPointMake(328.31 / 16, 100 / 16))
+        testPath.addCurveToPoint(CGPointMake(623.81 / 16, 103.03 / 16), controlPoint1: CGPointMake(384.02 / 16, -21.97 / 16), controlPoint2: CGPointMake(561.9 / 16, -20.15 / 16))
+        testPath.addCurveToPoint(CGPointMake(628.19 / 16, 272.54 / 16), controlPoint1: CGPointMake(643.45 / 16, 142.11 / 16), controlPoint2: CGPointMake(645.6 / 16, 225.54 / 16))
+        testPath.addCurveToPoint(CGPointMake(464.18 / 16, 452.22 / 16), controlPoint1: CGPointMake(605.47 / 16, 333.85 / 16), controlPoint2: CGPointMake(562.81 / 16, 380.59 / 16))
+        testPath.addCurveToPoint(CGPointMake(321.2 / 16, 580.25 / 16), controlPoint1: CGPointMake(399.5 / 16, 499.19 / 16), controlPoint2: CGPointMake(326.3 / 16, 570.27 / 16))
+        testPath.addCurveToPoint(CGPointMake(294.79 / 16, 552.79 / 16), controlPoint1: CGPointMake(315.29 / 16, 591.84 / 16), controlPoint2: CGPointMake(320.92 / 16, 582.06 / 16))
+        testPath.closePath()
+        //        testPath.
+        
+        var fillColor = UIColor.redColor()
+        fillColor.setFill()
+
+        testPath.fill()
+        
+        
+        
+        
+        
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = testPath.CGPath
+        shapeLayer.backgroundColor = UIColor.redColor().CGColor
+        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        let testView = UIView()
+        self.view.addSubview(testView)
+        testView.frame = CGRectMake(self.view.bounds.width - 120, self.view.bounds.height / 10, 100, 100)
+        testView.layer.addSublayer(shapeLayer)
+
+        
+        let rightButton: UIButton = UIButton() //(UIButtonType.Custom)
+        rightButton.frame = CGRectMake(0, 0, 40, 40)
+//        rightButton.
+//        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
+        rightButton.layer.addSublayer(shapeLayer)
+//        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
+        
+        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true);
+        
+//        let barButton = UIBarButtonItem()
+//        barButton.image = imgItemImage.image
+//        
+//        navigationController?.navigationItem.rightBarButtonItem = barButton
+//        navigationController?.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
     }
     
@@ -131,7 +189,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         configureProgressView()
         configureImOutButton()
         
-        
+        createAndSetupHeartButton()
         
         configureElementColors()
         
@@ -431,6 +489,43 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         lblDiscountPrice.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         
     }
+    
+    // HEART BUTTON
+    
+    func createAndSetupHeartButton() {
+        let testPath = UIBezierPath()
+        testPath.moveToPoint(CGPointMake(294.79 / 16, 552.79 / 16))
+        testPath.addCurveToPoint(CGPointMake(218.36 / 16, 485.91 / 16), controlPoint1: CGPointMake(281.02 / 16, 537.35 / 16), controlPoint2: CGPointMake(246.62 / 16, 507.26 / 16))
+        testPath.addCurveToPoint(CGPointMake(89.21 / 16, 382.21 / 16), controlPoint1: CGPointMake(134.61 / 16, 422.67 / 16), controlPoint2: CGPointMake(123.22 / 16, 413.52 / 16))
+        testPath.addCurveToPoint(CGPointMake(0 / 16, 187.87 / 16), controlPoint1: CGPointMake(26.53 / 16, 324.49 / 16), controlPoint2: CGPointMake(-0.09 / 16, 266.51 / 16))
+        testPath.addCurveToPoint(CGPointMake(13.41 / 16, 112.07 / 16), controlPoint1: CGPointMake(0.04 / 16, 149.49 / 16), controlPoint2: CGPointMake(2.66 / 16, 134.71 / 16))
+        testPath.addCurveToPoint(CGPointMake(92.86 / 16, 27.72 / 16), controlPoint1: CGPointMake(31.65 / 16, 73.69 / 16), controlPoint2: CGPointMake(58.51 / 16, 45.16 / 16))
+        testPath.addCurveToPoint(CGPointMake(169.8 / 16, 9.65 / 16), controlPoint1: CGPointMake(117.18 / 16, 15.36 / 16), controlPoint2: CGPointMake(129.18 / 16, 9.87 / 16))
+        testPath.addCurveToPoint(CGPointMake(246.23 / 16, 28.1 / 16), controlPoint1: CGPointMake(212.29 / 16, 9.41 / 16), controlPoint2: CGPointMake(221.24 / 16, 14.37 / 16))
+        testPath.addCurveToPoint(CGPointMake(314.45 / 16, 105.91 / 16), controlPoint1: CGPointMake(276.66 / 16, 44.81 / 16), controlPoint2: CGPointMake(307.97 / 16, 80.54 / 16))
+        testPath.addLineToPoint(CGPointMake(318.45 / 16, 121.58 / 16))
+        testPath.addLineToPoint(CGPointMake(328.31 / 16, 100 / 16))
+        testPath.addCurveToPoint(CGPointMake(623.81 / 16, 103.03 / 16), controlPoint1: CGPointMake(384.02 / 16, -21.97 / 16), controlPoint2: CGPointMake(561.9 / 16, -20.15 / 16))
+        testPath.addCurveToPoint(CGPointMake(628.19 / 16, 272.54 / 16), controlPoint1: CGPointMake(643.45 / 16, 142.11 / 16), controlPoint2: CGPointMake(645.6 / 16, 225.54 / 16))
+        testPath.addCurveToPoint(CGPointMake(464.18 / 16, 452.22 / 16), controlPoint1: CGPointMake(605.47 / 16, 333.85 / 16), controlPoint2: CGPointMake(562.81 / 16, 380.59 / 16))
+        testPath.addCurveToPoint(CGPointMake(321.2 / 16, 580.25 / 16), controlPoint1: CGPointMake(399.5 / 16, 499.19 / 16), controlPoint2: CGPointMake(326.3 / 16, 570.27 / 16))
+        testPath.addCurveToPoint(CGPointMake(294.79 / 16, 552.79 / 16), controlPoint1: CGPointMake(315.29 / 16, 591.84 / 16), controlPoint2: CGPointMake(320.92 / 16, 582.06 / 16))
+        testPath.closePath()
+        //        testPath.
+        testPath.fill()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = testPath.CGPath
+        shapeLayer.backgroundColor = UIColor.redColor().CGColor
+        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 3
+        
+        let testView = UIView()
+        self.view.addSubview(testView)
+        testView.frame = CGRectMake(self.view.bounds.width - 120, self.view.bounds.height / 10, 100, 100)
+        testView.layer.addSublayer(shapeLayer)
+    }
+
 
 
     
