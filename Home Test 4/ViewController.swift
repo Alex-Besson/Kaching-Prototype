@@ -56,6 +56,31 @@ class ViewController: UIViewController {
         rightButton.tintColor = CustomColors.getButtonColor()
         
 
+        // SETTING UP BEZIER
+        
+//        let path2 = UIBezierPath()
+//        path.moveToPoint(CGPointMake(5, 5))
+//        path.addLineToPoint(CGPointMake(40, 40))
+//        
+//        let hamLine = CAShapeLayer()
+//        hamLine.path = path2.CGPath
+//        hamLine.backgroundColor = UIColor.redColor().CGColor
+//        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+//        hamLine.lineWidth = 3
+//        hamLine.fillColor = UIColor.redColor().CGColor
+//        
+//        
+//        
+//        let leftButton: UIButton = UIButton()
+//        leftButton.frame = CGRectMake(0, 0, 40, 40)
+//        //        rightButton.
+//        //        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
+//        leftButton.layer.addSublayer(hamLine)
+//        //        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: leftButton)
+//        
+//        self.navigationItem.setLeftBarButtonItem(rightBarButtonItem, animated: true)
 
     }
     
