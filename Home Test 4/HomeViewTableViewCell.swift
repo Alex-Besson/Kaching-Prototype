@@ -57,6 +57,10 @@ class HomeViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        ProductImage.layer.cornerRadius = ProductImage.frame.width/2
+        ProductImage.clipsToBounds = true
+
+        
         configureColor()
         configureCellElements()
         self.addSubview(stkLabelStack)
