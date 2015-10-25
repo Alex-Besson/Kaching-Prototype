@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 18)!, NSForegroundColorAttributeName: CustomColors.getButtonColor()
         ]
         
+        
 //        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: CustomColors.getButtonColor()]
 
         
