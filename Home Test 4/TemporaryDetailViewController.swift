@@ -294,8 +294,16 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         imgItemImage.frame = CGRectMake(self.view.bounds.width / 2 - imageWidth / 2, tenthOfView, imageWidth, imageWidth / 2)
         imgItemImage.imageFromUrl(product.itemImageURL!)
         imgItemImage.layer.cornerRadius = 10
-        imgItemImage.clipsToBounds = true
+//        imgItemImage.clipsToBounds = true
         imgItemImage.contentMode = UIViewContentMode.ScaleAspectFill
+//        imgItemImage.layer.shadowPath = UIBezierPath(rect: imgItemImage.bounds).CGPath
+        imgItemImage.layer.shadowColor = UIColor.blackColor().CGColor
+        imgItemImage.layer.shadowRadius = 10
+//        imgItemImage.layer.shadowOffset = CGSizeZero
+        imgItemImage.layer.shadowOpacity = 1
+        imgItemImage.layer.shouldRasterize = true
+//        imgItemImage.layer.masksToBounds = true
+        imgItemImage.clipsToBounds = true
         
     }
     
