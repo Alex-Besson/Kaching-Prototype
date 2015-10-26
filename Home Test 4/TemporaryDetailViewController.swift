@@ -122,9 +122,9 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         shapeLayer.path = testPath.CGPath
         shapeLayer.backgroundColor = CustomColors.getNavBarColor().CGColor
         //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
-        shapeLayer.lineWidth = 1
-//        shapeLayer.fillColor = UIColor.redColor().CGColor
-        shapeLayer.strokeColor = UIColor.redColor().CGColor
+        shapeLayer.lineWidth = 2
+        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
+        shapeLayer.strokeColor = CustomColors.getViewBackgroundColor().CGColor
 
         
 //        let testView = UIView()
