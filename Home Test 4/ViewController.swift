@@ -27,6 +27,32 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var btnHamburgerButton: UIBarButtonItem!
     
+    var rightSwipeGesture = UISwipeGestureRecognizer()
+    var leftSwipeGesture = UISwipeGestureRecognizer()
+    
+    func configureSwipeGesture() {
+        rightSwipeGesture.addTarget(self, action: "swipeOccured:")
+        view.addGestureRecognizer(rightSwipeGesture)
+        
+        leftSwipeGesture.addTarget(self, action: "swipeOccured:")
+        view.addGestureRecognizer(leftSwipeGesture)
+        
+        leftSwipeGesture.direction = .Left
+        rightSwipeGesture.direction = .Right
+    }
+    
+    func swipeOccured(gesture: UISwipeGestureRecognizer) {
+        
+        if gesture.direction == .Right {
+            print("gestured left")
+            open()
+        } else if gesture.direction == .Left {
+            print("right was recognized")
+            close()
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -82,6 +108,7 @@ class ViewController: UIViewController {
 //        
 //        self.navigationItem.setLeftBarButtonItem(rightBarButtonItem, animated: true)
 
+        configureSwipeGesture()
     }
     
     func open() {
@@ -92,7 +119,7 @@ class ViewController: UIViewController {
     }
     
     func close() {
-        hamLeftConstraint.constant = -260
+        hamLeftConstraint.constant = -260 - 10
         UIView.animateWithDuration(0.3) { () -> Void in
             self.view.layoutIfNeeded()
         }
@@ -103,8 +130,9 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-
-            }
+        super.viewDidAppear(animated)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
