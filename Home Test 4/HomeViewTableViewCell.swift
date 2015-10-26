@@ -57,8 +57,11 @@ class HomeViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        ProductImage.layer.cornerRadius = ProductImage.frame.width/2
-        ProductImage.clipsToBounds = true
+//        ProductImage.layer.cornerRadius = ProductImage.frame.width/2
+//        ProductImage.clipsToBounds = true
+        
+        imgProductImage.layer.cornerRadius = imgProductImage.frame.width / 2
+        imgProductImage.clipsToBounds = true
 
         
         configureColor()

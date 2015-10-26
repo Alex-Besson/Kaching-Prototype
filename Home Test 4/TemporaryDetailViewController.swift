@@ -89,24 +89,22 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         let testPath = UIBezierPath()
-        testPath.moveToPoint(CGPointMake(294.79 / 16, 552.79 / 16))
-        testPath.addCurveToPoint(CGPointMake(218.36 / 16, 485.91 / 16), controlPoint1: CGPointMake(281.02 / 16, 537.35 / 16), controlPoint2: CGPointMake(246.62 / 16, 507.26 / 16))
-        testPath.addCurveToPoint(CGPointMake(89.21 / 16, 382.21 / 16), controlPoint1: CGPointMake(134.61 / 16, 422.67 / 16), controlPoint2: CGPointMake(123.22 / 16, 413.52 / 16))
-        testPath.addCurveToPoint(CGPointMake(0 / 16, 187.87 / 16), controlPoint1: CGPointMake(26.53 / 16, 324.49 / 16), controlPoint2: CGPointMake(-0.09 / 16, 266.51 / 16))
-        testPath.addCurveToPoint(CGPointMake(13.41 / 16, 112.07 / 16), controlPoint1: CGPointMake(0.04 / 16, 149.49 / 16), controlPoint2: CGPointMake(2.66 / 16, 134.71 / 16))
-        testPath.addCurveToPoint(CGPointMake(92.86 / 16, 27.72 / 16), controlPoint1: CGPointMake(31.65 / 16, 73.69 / 16), controlPoint2: CGPointMake(58.51 / 16, 45.16 / 16))
-        testPath.addCurveToPoint(CGPointMake(169.8 / 16, 9.65 / 16), controlPoint1: CGPointMake(117.18 / 16, 15.36 / 16), controlPoint2: CGPointMake(129.18 / 16, 9.87 / 16))
-        testPath.addCurveToPoint(CGPointMake(246.23 / 16, 28.1 / 16), controlPoint1: CGPointMake(212.29 / 16, 9.41 / 16), controlPoint2: CGPointMake(221.24 / 16, 14.37 / 16))
-        testPath.addCurveToPoint(CGPointMake(314.45 / 16, 105.91 / 16), controlPoint1: CGPointMake(276.66 / 16, 44.81 / 16), controlPoint2: CGPointMake(307.97 / 16, 80.54 / 16))
-        testPath.addLineToPoint(CGPointMake(318.45 / 16, 121.58 / 16))
-        testPath.addLineToPoint(CGPointMake(328.31 / 16, 100 / 16))
-        testPath.addCurveToPoint(CGPointMake(623.81 / 16, 103.03 / 16), controlPoint1: CGPointMake(384.02 / 16, -21.97 / 16), controlPoint2: CGPointMake(561.9 / 16, -20.15 / 16))
-        testPath.addCurveToPoint(CGPointMake(628.19 / 16, 272.54 / 16), controlPoint1: CGPointMake(643.45 / 16, 142.11 / 16), controlPoint2: CGPointMake(645.6 / 16, 225.54 / 16))
-        testPath.addCurveToPoint(CGPointMake(464.18 / 16, 452.22 / 16), controlPoint1: CGPointMake(605.47 / 16, 333.85 / 16), controlPoint2: CGPointMake(562.81 / 16, 380.59 / 16))
-        testPath.addCurveToPoint(CGPointMake(321.2 / 16, 580.25 / 16), controlPoint1: CGPointMake(399.5 / 16, 499.19 / 16), controlPoint2: CGPointMake(326.3 / 16, 570.27 / 16))
-        testPath.addCurveToPoint(CGPointMake(294.79 / 16, 552.79 / 16), controlPoint1: CGPointMake(315.29 / 16, 591.84 / 16), controlPoint2: CGPointMake(320.92 / 16, 582.06 / 16))
-        testPath.closePath()
-        //        testPath.
+        testPath.moveToPoint(CGPointMake(294.79 / 18, 552.79 / 18))
+        testPath.addCurveToPoint(CGPointMake(218.36 / 18, 485.91 / 18), controlPoint1: CGPointMake(281.02 / 18, 537.35 / 18), controlPoint2: CGPointMake(246.62 / 18, 507.26 / 18))
+        testPath.addCurveToPoint(CGPointMake(89.21 / 18, 382.21 / 18), controlPoint1: CGPointMake(134.61 / 18, 422.67 / 18), controlPoint2: CGPointMake(123.22 / 18, 413.52 / 18))
+        testPath.addCurveToPoint(CGPointMake(0 / 18, 187.87 / 18), controlPoint1: CGPointMake(26.53 / 18, 324.49 / 18), controlPoint2: CGPointMake(-0.09 / 18, 266.51 / 18))
+        testPath.addCurveToPoint(CGPointMake(13.41 / 18, 112.07 / 18), controlPoint1: CGPointMake(0.04 / 18, 149.49 / 18), controlPoint2: CGPointMake(2.66 / 18, 134.71 / 18))
+        testPath.addCurveToPoint(CGPointMake(92.86 / 18, 27.72 / 18), controlPoint1: CGPointMake(31.65 / 18, 73.69 / 18), controlPoint2: CGPointMake(58.51 / 18, 45.16 / 18))
+        testPath.addCurveToPoint(CGPointMake(169.8 / 18, 9.65 / 18), controlPoint1: CGPointMake(117.18 / 18, 15.36 / 18), controlPoint2: CGPointMake(129.18 / 18, 9.87 / 18))
+        testPath.addCurveToPoint(CGPointMake(246.23 / 18, 28.1 / 18), controlPoint1: CGPointMake(212.29 / 18, 9.41 / 18), controlPoint2: CGPointMake(221.24 / 18, 14.37 / 18))
+        testPath.addCurveToPoint(CGPointMake(314.45 / 18, 105.91 / 18), controlPoint1: CGPointMake(276.66 / 18, 44.81 / 18), controlPoint2: CGPointMake(307.97 / 18, 80.54 / 18))
+        testPath.addLineToPoint(CGPointMake(318.45 / 18, 121.58 / 18))
+        testPath.addLineToPoint(CGPointMake(328.31 / 18, 100 / 18))
+        testPath.addCurveToPoint(CGPointMake(623.81 / 18, 103.03 / 18), controlPoint1: CGPointMake(384.02 / 18, -21.97 / 18), controlPoint2: CGPointMake(561.9 / 18, -20.15 / 18))
+        testPath.addCurveToPoint(CGPointMake(628.19 / 18, 272.54 / 18), controlPoint1: CGPointMake(643.45 / 18, 142.11 / 18), controlPoint2: CGPointMake(645.6 / 18, 225.54 / 18))
+        testPath.addCurveToPoint(CGPointMake(464.18 / 18, 452.22 / 18), controlPoint1: CGPointMake(605.47 / 18, 333.85 / 18), controlPoint2: CGPointMake(562.81 / 18, 380.59 / 18))
+        testPath.addCurveToPoint(CGPointMake(321.2 / 18, 580.25 / 18), controlPoint1: CGPointMake(399.5 / 18, 499.19 / 18), controlPoint2: CGPointMake(326.3 / 18, 570.27 / 18))
+        testPath.addCurveToPoint(CGPointMake(294.79 / 18, 552.79 / 18), controlPoint1: CGPointMake(315.29 / 18, 591.84 / 18), controlPoint2: CGPointMake(320.92 / 18, 582.06 / 18))        //        testPath.
         
 //        let fillColor = UIColor.redColor()
 //        fillColor.setFill()
@@ -122,10 +120,11 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = testPath.CGPath
-        shapeLayer.backgroundColor = UIColor.redColor().CGColor
+        shapeLayer.backgroundColor = CustomColors.getNavBarColor().CGColor
         //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
-        shapeLayer.lineWidth = 3
-        shapeLayer.fillColor = UIColor.redColor().CGColor
+        shapeLayer.lineWidth = 2
+        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
+        shapeLayer.strokeColor = CustomColors.getViewBackgroundColor().CGColor
 
         
 //        let testView = UIView()
@@ -143,7 +142,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
         
-        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true);
+        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
         
 //        let barButton = UIBarButtonItem()
 //        barButton.image = imgItemImage.image
