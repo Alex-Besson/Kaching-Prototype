@@ -8,7 +8,9 @@
 
 import UIKit
 
+
 class MyCommitsTableViewController: UITableViewController {
+    
     
     
     override func viewDidLoad() {
@@ -93,7 +95,7 @@ class MyCommitsTableViewController: UITableViewController {
         cell.lblRetailPrice.frame = CGRectMake(0, 54, 160, 17)
         
         cell.imgProductImage.frame = CGRectMake(5, 5, cell.bounds.height - 10, cell.bounds.height - 10)
-        cell.imgProductImage.image = UIImage(named: "SignIn.jpg")
+        cell.imgProductImage.imageFromUrl(products[indexPath.row].itemImageURL!)
         
         cell.pBarCommits.progressTintColor = UIColor.greenColor()
         cell.pBarCommits.trackTintColor = UIColor.redColor()

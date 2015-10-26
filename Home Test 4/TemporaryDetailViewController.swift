@@ -14,6 +14,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     
     var login = LogInViewController()
     
+    
     var product: Parse_ProductModel!
     
     var counter:Float = 0
@@ -50,6 +51,8 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     // VIEW DID APPEAR
+    
+    let shapeLayer = CAShapeLayer()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -118,12 +121,12 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         
         
-        let shapeLayer = CAShapeLayer()
+        
         shapeLayer.path = testPath.CGPath
         shapeLayer.backgroundColor = CustomColors.getNavBarColor().CGColor
         //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
         shapeLayer.lineWidth = 2
-        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
+//        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
         shapeLayer.strokeColor = CustomColors.getViewBackgroundColor().CGColor
 
         
@@ -138,7 +141,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 //        rightButton.
 //        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
         rightButton.layer.addSublayer(shapeLayer)
-//        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
         
         let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
         
@@ -149,6 +152,22 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 //        
 //        navigationController?.navigationItem.rightBarButtonItem = barButton
 //        navigationController?.navigationItem.setRightBarButtonItem(barButton, animated: true)
+        
+    }
+    
+    var heartWasClicked = false
+    
+    func rightNavButtonClick(button: AnyObject) {
+        
+        
+        if heartWasClicked == false {
+            shapeLayer.fillColor = CustomColors.getViewBackgroundColor().CGColor
+            heartWasClicked = !heartWasClicked
+        } else {
+            shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
+            heartWasClicked = !heartWasClicked
+        }
+        
         
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVc-8V-ZNY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eVc-8V-ZNY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -498,33 +498,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="260" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrM-Hq-ynG">
-                                <rect key="frame" x="87" y="172" width="86" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="My Commits"/>
-                                <connections>
-                                    <segue destination="Vln-5W-Smc" kind="presentation" id="3te-Zc-Dpn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s12-Tl-JdT">
-                                <rect key="frame" x="87" y="252" width="87" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="My Favorites"/>
-                                <connections>
-                                    <segue destination="h4K-np-ah3" kind="presentation" id="dCg-yL-1C5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26p-ka-dFM">
-                                <rect key="frame" x="105" y="336" width="50" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="History"/>
-                                <connections>
-                                    <segue destination="yba-cY-GoS" kind="presentation" id="j2U-mR-69r"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SignIn.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="W2s-Qc-BrB">
                                 <rect key="frame" x="0.0" y="0.0" width="260" height="132"/>
                                 <animations/>
@@ -532,12 +505,12 @@
                                     <constraint firstAttribute="height" constant="132" id="Q0p-6w-rez"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uq1-gy-pd3">
-                                <rect key="frame" x="20" y="489" width="61" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uq1-gy-pd3">
+                                <rect key="frame" x="12" y="489" width="67" height="27"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Fya-hq-oYX"/>
-                                    <constraint firstAttribute="width" constant="53" id="Lxe-QD-5Be"/>
+                                    <constraint firstAttribute="width" constant="67" id="Lxe-QD-5Be"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <state key="normal" title="Contact Us"/>
@@ -545,7 +518,7 @@
                                     <segue destination="26Y-jH-bWh" kind="show" id="TxN-v8-7pf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-yY-Vtu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-yY-Vtu">
                                 <rect key="frame" x="152" y="489" width="88" height="27"/>
                                 <animations/>
                                 <constraints>
@@ -558,27 +531,57 @@
                                     <segue destination="4da-T3-w9v" kind="show" id="KzQ-tl-yfh"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-Oq-KxV">
+                                <rect key="frame" x="87" y="189" width="87" height="158"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VrM-Hq-ynG">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="My Commits"/>
+                                        <connections>
+                                            <segue destination="Vln-5W-Smc" kind="presentation" id="3te-Zc-Dpn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s12-Tl-JdT">
+                                        <rect key="frame" x="0.0" y="64" width="87" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="My Favorites"/>
+                                        <connections>
+                                            <segue destination="h4K-np-ah3" kind="presentation" id="dCg-yL-1C5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26p-ka-dFM">
+                                        <rect key="frame" x="0.0" y="128" width="87" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="History"/>
+                                        <connections>
+                                            <segue destination="yba-cY-GoS" kind="presentation" id="j2U-mR-69r"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <constraints>
+                            <constraint firstItem="G1W-Oq-KxV" firstAttribute="top" secondItem="W2s-Qc-BrB" secondAttribute="bottom" constant="57" id="2zR-fS-Xr1"/>
                             <constraint firstItem="W2s-Qc-BrB" firstAttribute="leading" secondItem="7rr-Un-8cR" secondAttribute="leading" id="Cqr-EL-Pmc"/>
                             <constraint firstItem="W2s-Qc-BrB" firstAttribute="top" secondItem="7rr-Un-8cR" secondAttribute="top" id="EPQ-9h-pHz"/>
+                            <constraint firstItem="G1W-Oq-KxV" firstAttribute="centerY" secondItem="7rr-Un-8cR" secondAttribute="centerY" id="Gaj-O9-EMm"/>
                             <constraint firstAttribute="trailing" secondItem="W2s-Qc-BrB" secondAttribute="trailing" id="Gbj-C9-pKc"/>
+                            <constraint firstItem="G1W-Oq-KxV" firstAttribute="centerX" secondItem="7rr-Un-8cR" secondAttribute="centerX" id="JSa-lp-QNj"/>
                             <constraint firstItem="qpE-Xf-KkZ" firstAttribute="top" secondItem="Z2v-yY-Vtu" secondAttribute="bottom" constant="20" id="JT4-OO-cVS"/>
                             <constraint firstItem="Uq1-gy-pd3" firstAttribute="top" secondItem="Ase-K7-wU7" secondAttribute="bottom" constant="489" id="MOU-qU-wfZ"/>
-                            <constraint firstItem="VrM-Hq-ynG" firstAttribute="centerX" secondItem="7rr-Un-8cR" secondAttribute="centerX" id="S7R-4Z-BHN"/>
-                            <constraint firstItem="s12-Tl-JdT" firstAttribute="top" secondItem="VrM-Hq-ynG" secondAttribute="bottom" constant="50" id="e2H-pQ-KBY"/>
-                            <constraint firstItem="26p-ka-dFM" firstAttribute="top" secondItem="s12-Tl-JdT" secondAttribute="bottom" constant="54" id="ktP-rJ-jFY"/>
-                            <constraint firstItem="VrM-Hq-ynG" firstAttribute="top" secondItem="W2s-Qc-BrB" secondAttribute="bottom" constant="40" id="lOw-LE-uz1"/>
                             <constraint firstItem="qpE-Xf-KkZ" firstAttribute="top" secondItem="Uq1-gy-pd3" secondAttribute="bottom" constant="20" id="lhp-Ni-0NH"/>
-                            <constraint firstItem="s12-Tl-JdT" firstAttribute="centerX" secondItem="7rr-Un-8cR" secondAttribute="centerX" id="ncd-wj-A6D"/>
-                            <constraint firstItem="26p-ka-dFM" firstAttribute="centerX" secondItem="7rr-Un-8cR" secondAttribute="centerX" id="oos-yP-Ics"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z2v-yY-Vtu" secondAttribute="trailing" constant="-12" id="s1W-zV-UHY"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Uq1-gy-pd3" secondAttribute="leading" id="t4C-Qr-XtH"/>
-                            <constraint firstItem="Z2v-yY-Vtu" firstAttribute="leading" secondItem="Uq1-gy-pd3" secondAttribute="trailing" constant="91" id="xJ5-8Y-mlX"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Uq1-gy-pd3" secondAttribute="leading" constant="4" id="t4C-Qr-XtH"/>
+                            <constraint firstItem="Z2v-yY-Vtu" firstAttribute="leading" secondItem="Uq1-gy-pd3" secondAttribute="trailing" constant="73" id="xJ5-8Y-mlX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Gaj-O9-EMm"/>
                                 <exclude reference="s1W-zV-UHY"/>
                             </mask>
                         </variation>

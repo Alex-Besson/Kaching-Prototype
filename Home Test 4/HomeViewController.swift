@@ -10,11 +10,11 @@ import UIKit
 
 var shouldShowSearchResults = false
 
-
+var products = [Parse_ProductModel]()
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
     var filteredArray = [Parse_ProductModel]()
-    var products = [Parse_ProductModel]()
+    
     let productControllers = ProductController()
 
     
@@ -62,9 +62,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     func loadData() {
-        productControllers.fetchParseData { (products, error) -> Void in
+        productControllers.fetchParseData { (productz, error) -> Void in
             
-            self.products = products!
+            products = productz!
          
             self.tblSearchResults.reloadData()
             
@@ -124,7 +124,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         } else {
            
-            return self.products.count
+            return products.count
             
         }
 
@@ -135,7 +135,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
         
-        let product = (!shouldShowSearchResults) ? self.products[indexPath.row] :
+        let product = (!shouldShowSearchResults) ? products[indexPath.row] :
             self.filteredArray[indexPath.row]
         
         
@@ -180,7 +180,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // SEARCH DELEGATE FUNCTION
     
     func didChangeSearchText(searchText: String) {
-        filteredArray = self.products.filter({ (product) -> Bool in
+        filteredArray = products.filter({ (product) -> Bool in
             let productText = product.itemName?.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             
             return productText != nil
@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                  if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
 
             detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
-                self.products[indexPath.row]
+                products[indexPath.row]
                    
             }
             

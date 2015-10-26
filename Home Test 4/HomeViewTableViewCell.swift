@@ -51,7 +51,7 @@ class HomeViewTableViewCell: UITableViewCell {
     }
     
     func setLabelText() -> String {
-        return "Hello, World!"
+        return "I am a new user!"
     }
     
     override func awakeFromNib() {
