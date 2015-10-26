@@ -12,10 +12,17 @@ class ProductController {
 
     
     var products = [Parse_ProductModel]()
-//    var itemImages = [UIImage]()
+    
+    
+
+    
+    
+    
     
     func fetchParseData (callBack:([Parse_ProductModel]?, NSError?) -> Void ) -> Void {
         let query = PFQuery(className: "ItemList")
+      
+        
         query.findObjectsInBackgroundWithBlock { (productsArray, error) -> Void in
             
             guard error == nil else {
@@ -52,29 +59,30 @@ class ProductController {
                 guard let currentCommit = parseProduct.objectForKey("CurrentCommit") as? Float else {
                     return
                 }
-                guard let itemImagePFFile = parseProduct.objectForKey("ItemImage") as? PFFile else {
+                
+                guard  let currentItemID = parseProduct.objectId else {
+                    return
+                }
+                    
+                guard let itemDesc = parseProduct.objectForKey("Description") as? String else{
+                return
+                }
+                
+                
+                guard let itemImageURL = parseProduct.objectForKey("url") as? String else {
                     return
                 }
                 
-//                itemImagePFFile.getDataInBackgroundWithBlock({ (imageData: NSData?, error:NSError?) -> Void in
-//                    if (error == nil) {
-//                        guard let itemimage = UIImage(data: imageData!) else {
-//                            print("No image found")
-//                            return
-//                        }
-//                        
-//                        self.itemImages.append(itemimage)
-//                    }
-//               })
                 
                 
                 let discountPriceString = String(format: "%.2f", discountPriceFloat)
                 let retailPriceString = String(format: "%.2f", retailPriceFloat)
-                //                self.products.append(product)
-                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit , threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString)]
                 
+                self.products += [Parse_ProductModel(itemName: itemName, currentCommit: currentCommit, threshold: threshold, retailPrice: retailPriceString, discountPrice: discountPriceString, itemId: currentItemID, itemImageURL: itemImageURL,itemDescription: itemDesc)]
+              
                 
             }
+            
             callBack(self.products, nil)
         }
         

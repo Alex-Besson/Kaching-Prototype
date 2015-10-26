@@ -8,112 +8,157 @@
 
 import UIKit
 
-var dataArray = ["iPhone 6", "iPhone 6 Plus", "Crappy Samsung Phone", "Another Crappy Samsung Phone", "Vacuum Cleaner", "SONY 4K TV", "Samsung 4K TV", "iPad Pro", "Silicon Valley: Complete First Season", "Lamp", "La-Z Boy Chair", "1977 Gibson Les Paul Guitar", "Fender Jazz Bass", "The Big Bang Theory: Complete Series"]
-
-var filteredArray = [String]()
-
 var shouldShowSearchResults = false
 
 
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CustomSearchControllerDelegate {
+    var filteredArray = [Parse_ProductModel]()
     var products = [Parse_ProductModel]()
     let productControllers = ProductController()
-    var Pbar = [Float]()
+
+    
+    lazy var refreshControl : UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+       
+        
+        return refreshControl
+    }()
+    
+    func refresh(){
+        loadData()
+        refreshControl.endRefreshing()
+        print("refresh complete")
+    }
+    
+    
+    
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
     var customSearchController: CustomSearchController!
     
+  
+    
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getButtonColor(), searchBarTintColor: CustomColors.getNavBarColor())
         
+        customSearchController.customSearchBar.backgroundColor = UIColor.clearColor()
         customSearchController.customSearchBar.placeholder = "Search here..."
-        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+        
+//        customSearchController.customSearchBar.setPositionAdjustment(UIOffsetMake(0, 0), forSearchBarIcon: .Search)
+//        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+//        customSearchController.customSearchBar.setScopeBarButtonTitleTextAttributes(["Search" : "lol"], forState: UIControlState.Normal)
+//        customSearchController.customSearchBar.
         
         customSearchController.customDelegate = self
+//        customSearchController.customSearchBar.showsCancelButton = false
+        
+        
+        
+        
     }
 
-    func CalculateProgressBar (currentCommit:Float,currentThreshold:Float) -> Float{
-        
-        return (currentCommit/currentThreshold)
-        
-        
+    
+    func loadData() {
+        productControllers.fetchParseData { (products, error) -> Void in
+            
+            self.products = products!
+         
+            self.tblSearchResults.reloadData()
+            
+        }
     }
-    
-    
-    
-    
-    
+  
+  // VIEW DID LOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productControllers.fetchParseData { (products, error) -> Void in
+        print(navigationController?.navigationBar.frame.size.height)
+        loadData()
+        
+        self.tblSearchResults.addSubview(self.refreshControl)
+        tblSearchResults.rowHeight = 128
+        tblSearchResults.backgroundColor = CustomColors.getViewBackgroundColor()
+        
+//        configureCustomSearchController()
+        tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
+        
+        configureCustomSearchController()
+        
+        // // //
+        
+        let textfield:UITextField = customSearchController.customSearchBar.valueForKey("searchField") as! UITextField
+        
+        //Set the foregroundcolor of the placeholder
+        let attributedString = NSAttributedString(string: "Search...", attributes: [NSForegroundColorAttributeName : CustomColors.getButtonColor()])
+        
+        textfield.attributedPlaceholder = attributedString
+
+        //Get the glass icon
+        let iconView:UIImageView = textfield.leftView as! UIImageView
+        //Make the icon to a template which you can edit
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        //Set the color of the icon
+        iconView.tintColor = CustomColors.getButtonColor()
+//        customSearchControll
+        
+    }
+    
+    // VIEW DID APPEAR
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
+        
+    }
+    
+    // TABLE VIEW FUNCTIONS
+    
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if shouldShowSearchResults {
             
-            self.products = products!
+            return filteredArray.count
             
-            
+        } else {
            
-            
-            self.tblSearchResults.reloadData()
-           
-            
+            return self.products.count
             
         }
 
 
-        // Do any additional setup after loading the view.
-        configureCustomSearchController()
     }
-    
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if shouldShowSearchResults {
-//            return filteredArray.count
-//        } else {
-//            return dataArray.count
-//        }
-        return self.products.count
-
-    }
-    
     
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! HomeViewTableViewCell
-          
-        cell.Product_Name.text = self.products[indexPath.row].itemName
+        
+        let product = (!shouldShowSearchResults) ? self.products[indexPath.row] :
+            self.filteredArray[indexPath.row]
         
         
+        cell.Product_Name.text = product.itemName
+     
         
-        cell.Product_RetailPrice.text = self.products[indexPath.row].retailPrice
-        cell.Product_DiscountPrice.text = self.products[indexPath.row].discountPrice
+        cell.Product_RetailPrice.text = "Was: $\(product.retailPrice!)"
+        cell.Product_DiscountPrice.text = "Now: $\(product.discountPrice!)"
+    
+    
         
         
+        cell.Product_ProgressBar.ChangeProgressBar(product.currentCommit!, threshold: product.threshold!)
         
+            cell.ProductImage.imageFromUrl(product.itemImageURL!)
         
-       Pbar.append(CalculateProgressBar(self.products[indexPath.row].currentCommit!, currentThreshold: self.products[indexPath.row].threshold!))
-
-        cell.Product_ProgressBar.setProgress(Pbar[indexPath.row], animated: true)
        
-//        if productControllers.itemImages.count > 0 {
-//        cell.ProductImage.image = productControllers.itemImages[0]
-//        } else {
-//            print("Image was not loaded")
-//        }
-        
-//        if shouldShowSearchResults {
-//            cell.textLabel?.text = filteredArray[indexPath.row]
-//        } else {
-//            cell.textLabel?.text = dataArray[indexPath.row]
-//        }
-//
-        
         return cell
     }
 
 
     
+    // SEARCH BAR FUNCTIONS
     
     func didStartSearching() {
         shouldShowSearchResults = true
@@ -132,11 +177,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tblSearchResults.reloadData()
     }
     
+    // SEARCH DELEGATE FUNCTION
+    
     func didChangeSearchText(searchText: String) {
-        filteredArray = dataArray.filter({ (product) -> Bool in
-            let productText : NSString = product
+        filteredArray = self.products.filter({ (product) -> Bool in
+            let productText = product.itemName?.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             
-            return (productText.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+            return productText != nil
         })
         
         tblSearchResults.reloadData()
@@ -152,16 +199,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
        
         if segue.identifier == "detailView" {
-        if let  detailViewController = segue.destinationViewController as? ProductDetailViewController{
-        
-        if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
-            detailViewController.itemRetailPrice = self.products[indexPath.row].retailPrice
-            detailViewController.itemDiscountPrice = self.products[indexPath.row].discountPrice
-            detailViewController.itemProgressBar = self.Pbar[indexPath.row]
-          
-             
-            
+        if let  detailViewController = segue.destinationViewController as? TemporaryDetailViewController{
+                 if let indexPath = self.tblSearchResults.indexPathForCell(sender as! HomeViewTableViewCell) {
+
+            detailViewController.product = (shouldShowSearchResults) ? filteredArray[indexPath.row] :
+                self.products[indexPath.row]
+                   
             }
+            
         }
         }
     }
