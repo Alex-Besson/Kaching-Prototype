@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    
 
     @IBOutlet weak var tblSearchResults: UITableView!
     
@@ -41,12 +42,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
     
     func configureCustomSearchController() {
-        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, tblSearchResults.frame.size.width, 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.purpleColor(), searchBarTintColor: UIColor.blackColor())
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRectMake(0.0, 0.0, self.view.frame.size.width, 50.0), searchBarFont: UIFont(name: "Helvetica Neue", size: 16.0)!, searchBarTextColor: CustomColors.getButtonColor(), searchBarTintColor: CustomColors.getNavBarColor())
         
+        customSearchController.customSearchBar.backgroundColor = UIColor.clearColor()
         customSearchController.customSearchBar.placeholder = "Search here..."
-        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+        
+//        customSearchController.customSearchBar.setPositionAdjustment(UIOffsetMake(0, 0), forSearchBarIcon: .Search)
+//        tblSearchResults.tableHeaderView = customSearchController.customSearchBar
+//        customSearchController.customSearchBar.setScopeBarButtonTitleTextAttributes(["Search" : "lol"], forState: UIControlState.Normal)
+//        customSearchController.customSearchBar.
         
         customSearchController.customDelegate = self
+//        customSearchController.customSearchBar.showsCancelButton = false
+        
+        
+        
+        
     }
 
     
@@ -60,24 +71,51 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
   
-  
+  // VIEW DID LOAD
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       loadData()
+        print(navigationController?.navigationBar.frame.size.height)
+        loadData()
         
         self.tblSearchResults.addSubview(self.refreshControl)
-            configureCustomSearchController()
+        tblSearchResults.rowHeight = 128
+        tblSearchResults.backgroundColor = CustomColors.getViewBackgroundColor()
         
+//        configureCustomSearchController()
+        tblSearchResults.separatorColor = CustomColors.getTitleTextColor()
+        
+        configureCustomSearchController()
+        
+        // // //
+        
+        let textfield:UITextField = customSearchController.customSearchBar.valueForKey("searchField") as! UITextField
+        
+        //Set the foregroundcolor of the placeholder
+        let attributedString = NSAttributedString(string: "Search...", attributes: [NSForegroundColorAttributeName : CustomColors.getButtonColor()])
+        
+        textfield.attributedPlaceholder = attributedString
 
+        //Get the glass icon
+        let iconView:UIImageView = textfield.leftView as! UIImageView
+        //Make the icon to a template which you can edit
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        //Set the color of the icon
+        iconView.tintColor = CustomColors.getButtonColor()
+//        customSearchControll
+        
     }
     
+    // VIEW DID APPEAR
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.titleView = customSearchController.customSearchBar
+        
+    }
     
-    
-    
+    // TABLE VIEW FUNCTIONS
     
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if shouldShowSearchResults {
@@ -107,7 +145,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.Product_RetailPrice.text = "Was: $\(product.retailPrice!)"
         cell.Product_DiscountPrice.text = "Now: $\(product.discountPrice!)"
     
-       
+    
         
         
         cell.Product_ProgressBar.ChangeProgressBar(product.currentCommit!, threshold: product.threshold!)
@@ -120,6 +158,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 
     
+    // SEARCH BAR FUNCTIONS
     
     func didStartSearching() {
         shouldShowSearchResults = true

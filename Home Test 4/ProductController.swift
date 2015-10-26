@@ -14,13 +14,15 @@ class ProductController {
     var products = [Parse_ProductModel]()
     
     
-    
+
     
     
     
     
     func fetchParseData (callBack:([Parse_ProductModel]?, NSError?) -> Void ) -> Void {
         let query = PFQuery(className: "ItemList")
+      
+        
         query.findObjectsInBackgroundWithBlock { (productsArray, error) -> Void in
             
             guard error == nil else {
