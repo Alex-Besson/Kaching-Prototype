@@ -350,7 +350,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 
 
         
-        btnCommit.frame = CGRectMake(self.view.bounds.width - 90, imageViewHeight * 2 + tenthOfView + 20, 80, 30)
+        btnCommit.frame = CGRectMake(self.view.bounds.width - 99, imageViewHeight * 2 + tenthOfView + 20, 80, 30)
         btnCommit.setTitle("Commit!", forState: UIControlState.Normal)
         btnCommit.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnCommit.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal)
@@ -414,7 +414,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 //        lblRetailPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2, imageViewHeight * 2 + tenthOfView + 40, 200, 50)
 
         
-        btnBuyNow.frame = CGRectMake(self.view.bounds.width - 90, imageViewHeight * 2 + tenthOfView + 60, 80, 30)
+        btnBuyNow.frame = CGRectMake(self.view.bounds.width - 99, imageViewHeight * 2 + tenthOfView + 60, 80, 30)
         btnBuyNow.setTitle("Buy Now!", forState: UIControlState.Normal)
         btnBuyNow.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnBuyNow.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
@@ -434,7 +434,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 //        self.view.addSubview(btnLogOut)
         scrollView.addSubview(btnLogOut)
         
-        btnLogOut.frame = CGRectMake(self.view.bounds.width - 80, 610, 70, 30)
+        btnLogOut.frame = CGRectMake(self.view.bounds.width - 355 , 19, 70, 30)
         
         btnLogOut.setTitle("Log Out", forState: UIControlState.Normal)
         
@@ -479,8 +479,8 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         let imageViewWidth = self.view.bounds.width - 40
         let imageViewHeight = (self.view.bounds.width - 40) / 2
         
-        pBarCommitProgress.frame = CGRectMake(self.view.bounds.width / 2 - 150, imageViewHeight * 3 + tenthOfView, 300, 100)
-        
+        pBarCommitProgress.frame = CGRectMake(self.view.bounds.width / 2 - 167, imageViewHeight * 3 + tenthOfView, 330, 100)
+       
         self.pBarCommitProgress.transform = CGAffineTransformScale(self.pBarCommitProgress.transform, 1, 5)
     
     }
@@ -489,7 +489,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
 //        self.view.addSubview(btnImOut)
         scrollView.addSubview(btnImOut)
         
-        btnImOut.frame = CGRectMake(self.view.bounds.width / 2 - 35, 560, 70, 30)
+        btnImOut.frame = CGRectMake(self.view.bounds.width / 2 - 35, 520, 70, 30)
         btnImOut.setTitle("I'm Out", forState: UIControlState.Normal)
         btnImOut.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
         btnImOut.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
