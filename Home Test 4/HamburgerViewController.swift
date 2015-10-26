@@ -22,6 +22,11 @@ class HamburgerViewController: UIViewController {
         // Do any additional setup after loading the view.
         configureColors()
         configureHamButtons()
+        
+        
+        self.view.layer.shadowOffset = CGSize(width: 6, height: 3)
+        self.view.layer.shadowOpacity = 0.4
+        self.view.layer.shadowRadius = 2
     }
     
     func configureColors() {
