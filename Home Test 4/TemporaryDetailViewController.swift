@@ -219,6 +219,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
         navigationController?.navigationItem.leftBarButtonItem?.tintColor = CustomColors.getButtonColor()
+        navigationController?.navigationBar.tintColor = CustomColors.getButtonColor()
         
         //        let barButton = UIBarButtonItem()
         //        barButton.image = imgItemImage.image

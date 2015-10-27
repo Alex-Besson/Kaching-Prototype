@@ -18,6 +18,7 @@ class HistoryTableViewController: UITableViewController {
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
         self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
+        navigationController?.navigationBar.tintColor = CustomColors.getButtonColor()
         
         let startPoint = CGPointMake(0.0, (navigationController?.navigationBar.bounds.height)!)
         let endPoint = CGPointMake((navigationController?.navigationBar.bounds.width)!, ((navigationController?.navigationBar.bounds.height)!))
