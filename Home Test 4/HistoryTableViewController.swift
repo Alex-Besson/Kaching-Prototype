@@ -8,6 +8,8 @@
 
 import UIKit
 
+var historyArray = [Parse_ProductModel]()
+
 class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -48,7 +50,7 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return historyArray.count
     }
 
     
@@ -90,6 +92,14 @@ class HistoryTableViewController: UITableViewController {
         cell.pBarCommits.transform = CGAffineTransformScale(cell.pBarCommits.transform, 1, 5)
         
         cell.stkLabelStack.frame = CGRectMake(imageViewWidth + 10 + (cell.bounds.width - imageViewWidth - 10) / 2 - stackWidth / 2 - thirdOfCellHeight, tenthOfCellHeight, stackWidth + thirdOfCellHeight, stackHeight)
+        
+        
+        
+        cell.lblTitle.text = historyArray[indexPath.row].itemName
+        cell.lblDiscountPrice.text = historyArray[indexPath.row].discountPrice
+        cell.lblRetailPrice.text = historyArray[indexPath.row].retailPrice
+        cell.imgProductImage.imageFromUrl(historyArray[indexPath.row].itemImageURL!)
+        cell.pBarCommits.ChangeProgressBar(historyArray[indexPath.row].currentCommit!, threshold: historyArray[indexPath.row].threshold!)
 
         return cell
     }

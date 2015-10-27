@@ -107,13 +107,20 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         if heartWasClicked == false {
             shapeLayer.fillColor = CustomColors.getViewBackgroundColor().CGColor
             heartWasClicked = !heartWasClicked
+            favoritesArray.append(product)
         } else {
             shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
             heartWasClicked = !heartWasClicked
+            
+            
+            
+
         }
         
         
     }
+
+
     
     // VIEW DID DISAPPEAR
     
@@ -435,7 +442,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
                 btnImOut.hidden = false
                 configureImOutButton()
                 
-                
+               myCommitsArray.append(product)
             }
         guard let itemID = product.itemId else {return}
             
@@ -570,6 +577,8 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         guard let itemID = product.itemId else {return}
         guard let user = PFUser.currentUser()!.objectId else {return}
         commitChanger.change(user, myItemID: itemID, change: counter)
+        
+        
     }
     
     func configureElementColors() {

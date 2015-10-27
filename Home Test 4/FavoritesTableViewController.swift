@@ -8,6 +8,8 @@
 
 import UIKit
 
+var favoritesArray = [Parse_ProductModel]()
+
 class FavoritesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -49,7 +51,7 @@ class FavoritesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return favoritesArray.count
     }
 
     
@@ -75,14 +77,14 @@ class FavoritesTableViewController: UITableViewController {
         cell.lblTitle.text = instanceOfCustomCell.setLabelText()
         cell.lblTitle.frame = CGRectMake(0, 0, 130, 18)
         
-        cell.lblDiscountPrice.text = "discount price"
+        
         cell.lblDiscountPrice.frame = CGRectMake(0, 26, 130, 18)
         
-        cell.lblRetailPrice.text = "retail price"
+        
         cell.lblRetailPrice.frame = CGRectMake(0, 54, 160, 17)
         
         cell.imgProductImage.frame = CGRectMake(5, 5, cell.bounds.height - 10, cell.bounds.height - 10)
-        cell.imgProductImage.image = UIImage(named: "SignIn.jpg")
+        
         
         cell.pBarCommits.progressTintColor = UIColor.greenColor()
         cell.pBarCommits.trackTintColor = UIColor.redColor()
@@ -92,6 +94,14 @@ class FavoritesTableViewController: UITableViewController {
         cell.pBarCommits.transform = CGAffineTransformScale(cell.pBarCommits.transform, 1, 5)
         
         cell.stkLabelStack.frame = CGRectMake(imageViewWidth + 10 + (cell.bounds.width - imageViewWidth - 10) / 2 - stackWidth / 2 - thirdOfCellHeight, tenthOfCellHeight, stackWidth + thirdOfCellHeight, stackHeight)
+        
+        
+        cell.lblTitle.text = favoritesArray[indexPath.row].itemName
+        cell.lblDiscountPrice.text = favoritesArray[indexPath.row].discountPrice
+        cell.lblRetailPrice.text = favoritesArray[indexPath.row].retailPrice
+        cell.imgProductImage.imageFromUrl(favoritesArray[indexPath.row].itemImageURL!)
+        cell.pBarCommits.ChangeProgressBar(favoritesArray[indexPath.row].currentCommit!, threshold: favoritesArray[indexPath.row].threshold!)
+
 
 
         return cell

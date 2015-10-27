@@ -8,6 +8,8 @@
 
 import UIKit
 
+var myCommitsArray = [Parse_ProductModel]()
+
 
 class MyCommitsTableViewController: UITableViewController {
     
@@ -62,7 +64,7 @@ class MyCommitsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return myCommitsArray.count
     }
 
     
@@ -89,10 +91,10 @@ class MyCommitsTableViewController: UITableViewController {
         cell.lblTitle.text = instanceOfCustomCell.setLabelText()
         cell.lblTitle.frame = CGRectMake(0, 0, 130, 18)
         
-        cell.lblDiscountPrice.text = "discount price"
+        
         cell.lblDiscountPrice.frame = CGRectMake(0, 26, 130, 18)
         
-        cell.lblRetailPrice.text = "retail price"
+        
         cell.lblRetailPrice.frame = CGRectMake(0, 54, 160, 17)
         
         cell.imgProductImage.frame = CGRectMake(5, 5, cell.bounds.height - 10, cell.bounds.height - 10)
@@ -106,6 +108,15 @@ class MyCommitsTableViewController: UITableViewController {
         cell.pBarCommits.transform = CGAffineTransformScale(cell.pBarCommits.transform, 1, 5)
         
         cell.stkLabelStack.frame = CGRectMake(imageViewWidth + 20 , tenthOfCellHeight, stackWidth + thirdOfCellHeight, stackHeight)
+        
+        
+        
+        cell.lblTitle.text = myCommitsArray[indexPath.row].itemName
+        cell.lblRetailPrice.text = myCommitsArray[indexPath.row].retailPrice
+        cell.lblDiscountPrice.text = myCommitsArray[indexPath.row].discountPrice
+        cell.imgProductImage.imageFromUrl(myCommitsArray[indexPath.row].itemImageURL!)
+        cell.pBarCommits.ChangeProgressBar(myCommitsArray[indexPath.row].currentCommit!, threshold: myCommitsArray[indexPath.row].threshold!)
+        
     
 //        + (cell.bounds.width - imageViewWidth - 10) / 2 - stackWidth / 2 - thirdOfCellHeight
         

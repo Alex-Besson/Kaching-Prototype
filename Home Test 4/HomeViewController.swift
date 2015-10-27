@@ -103,8 +103,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         //Set the color of the icon
         iconView.tintColor = CustomColors.getButtonColor()
-//        customSearchControll
         
+                
     }
     
     // VIEW DID APPEAR

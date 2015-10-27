@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         
 
         // SETTING UP BEZIER
-        
+//        
 //        let path2 = UIBezierPath()
 //        path.moveToPoint(CGPointMake(5, 5))
 //        path.addLineToPoint(CGPointMake(40, 40))
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
 //        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
 //        hamLine.lineWidth = 3
 //        hamLine.fillColor = UIColor.redColor().CGColor
-//        
+//
 //        
 //        
 //        let leftButton: UIButton = UIButton()
@@ -107,6 +107,9 @@ class ViewController: UIViewController {
 //        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: leftButton)
 //        
 //        self.navigationItem.setLeftBarButtonItem(rightBarButtonItem, animated: true)
+        
+        
+
 
         configureSwipeGesture()
     }
@@ -131,6 +134,39 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+//        let hamPath = UIBezierPath()
+//        let hamLayer = CAShapeLayer()
+//        
+//        hamPath.fill()
+//        
+//        
+//        hamPath.moveToPoint(CGPointMake(10, 10))
+//        hamPath.addLineToPoint(CGPointMake(40, 40))
+//        
+//        
+//        hamLayer.path = hamPath.CGPath
+//        hamLayer.backgroundColor = UIColor.redColor().CGColor
+//        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+//        hamLayer.lineWidth = 3
+//        hamLayer.fillColor = UIColor.redColor().CGColor
+//        
+//        let leftButton: UIButton = UIButton()
+//        leftButton.frame = CGRectMake(0, 0, 40, 40)
+//        //        rightButton.
+//        //        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
+//        leftButton.layer.addSublayer(hamLayer)
+//        //        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        let leftBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: leftButton)
+//        
+//        self.navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
+//        
+//        
+//        self.navigationItem.setLeftBarButtonItem(leftBarButtonItem, animated: true)
+//        navigationController?.navigationItem.leftBarButtonItem?.tintColor = CustomColors.getButtonColor()
+//        navigationController?.navigationBar.tintColor = CustomColors.getButtonColor()
+        
         
     }
     
