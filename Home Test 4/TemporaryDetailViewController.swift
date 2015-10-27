@@ -424,7 +424,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         if PFUser.currentUser() == nil {
 //            self.presentViewController(login.logInViewController, animated: true, completion: nil)
-           self.performSegueWithIdentifier("login", sender: self)
+           self.performSegueWithIdentifier("loginView", sender: self)
             
         } else {
             
@@ -439,7 +439,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         guard let itemID = product.itemId else {return}
             
-            guard let user = currentUser?.objectId else {return}
+            guard let user = PFUser.currentUser()!.objectId else {return}
 //            var userCommit =   counter - product.currentCommit!
             
         
@@ -568,7 +568,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         pBarCommitProgress.ChangeProgressBar(actualPBar, threshold: product.threshold!)
         
         guard let itemID = product.itemId else {return}
-        guard let user = currentUser?.objectId else {return}
+        guard let user = PFUser.currentUser()!.objectId else {return}
         commitChanger.change(user, myItemID: itemID, change: counter)
     }
     
