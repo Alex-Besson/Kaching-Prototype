@@ -113,13 +113,11 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
             heartWasClicked = !heartWasClicked
             
             
-            
 
         }
         
         
     }
-
 
     
     // VIEW DID DISAPPEAR
@@ -233,6 +231,8 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         //
         //        navigationController?.navigationItem.rightBarButtonItem = barButton
         //        navigationController?.navigationItem.setRightBarButtonItem(barButton, animated: true)
+        
+        historyArray.append(product)
     }
     
     

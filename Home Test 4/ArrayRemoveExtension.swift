@@ -8,10 +8,14 @@
 
 import Foundation
 
-extension RangeReplaceableCollectionType where Generator.Element : Equatable {
-    mutating func removeObject(object : Generator.Element) {
-        if let index = self.indexOf(object) {
-            self.removeAtIndex(index)
-        }
-    }
-}
+//extension Array {
+//    mutating func remove <U: Equatable> (object: U) {
+//        for i in StrideThrough(Parse_ProductModel) {
+//            if let element = self[i] as? U {
+//                if element == object {
+//                    self.removeAtIndex(i)
+//                }
+//            }
+//        }
+//    }
+//}
