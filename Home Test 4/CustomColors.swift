@@ -26,7 +26,7 @@ class CustomColors {
     }
     
     class func getDescriptionBackgroundColor() -> UIColor {
-        return UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
+        return UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1) //UIColor(red: 242/255, green: 239/255, blue: 194/255, alpha: 1) 
     }
     
     class func getPriceLabelColor() -> UIColor {

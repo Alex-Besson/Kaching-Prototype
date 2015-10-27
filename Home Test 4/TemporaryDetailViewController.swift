@@ -27,11 +27,15 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     // UI ELEMENTS
     
     let lblTitle = UILabel()
+    
     let lblDescription = UILabel()
+    let parentForDescriptionView = UIView()
+    
     let lblDiscountPrice = UILabel()
     let lblRetailPrice = UILabel()
     
     let imgItemImage = UIImageView()
+    let parentForImageView = UIView()
     
     let btnCommit = UIButton(type: UIButtonType.System) as UIButton
     let btnBuyNow = UIButton(type: UIButtonType.System) as UIButton
@@ -211,6 +215,9 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         configureProgressView()
         configureImOutButton()
         
+        configureParentForImageView()
+        configureParentForDescriptionLabel()
+        
         createAndSetupHeartButton()
         
         configureElementColors()
@@ -261,14 +268,14 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
     
     func configureDescriptionLabel() {
 //        self.view.addSubview(lblDescription)
-        self.scrollView.addSubview(lblDescription)
+        self.parentForDescriptionView.addSubview(lblDescription)
         
         let descriptionWidth = self.view.bounds.width - 40
         let descriptionHeight = descriptionWidth / 2
         let tenthOfView = self.view.bounds.height / 10
         
         
-        lblDescription.frame = CGRectMake(self.view.bounds.width / 2 - descriptionWidth / 2, descriptionHeight + tenthOfView + 10, descriptionWidth, descriptionHeight)
+        lblDescription.frame = CGRectMake(10, 10, descriptionWidth - 20, descriptionHeight - 20)//CGRectMake(self.view.bounds.width / 2 - descriptionWidth / 2, descriptionHeight + tenthOfView + 10, descriptionWidth, descriptionHeight)
         lblDescription.text = product.itemDescription
         lblDescription.font = UIFont(name: "Helvetica Neue", size: 14)
         
@@ -277,21 +284,40 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         lblDescription.lineBreakMode = NSLineBreakMode.ByWordWrapping
         lblDescription.textAlignment = NSTextAlignment.Justified
 //        lblDescription.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        lblDescription.backgroundColor = CustomColors.getDescriptionBackgroundColor()
         lblDescription.layer.cornerRadius = 10
         lblDescription.clipsToBounds = true
         
+    }
+    
+    func configureParentForDescriptionLabel() {
+        self.scrollView.addSubview(parentForDescriptionView)
         
+        let descriptionWidth = self.view.bounds.width - 40
+        let descriptionHeight = descriptionWidth / 2
+        let tenthOfView = self.view.bounds.height / 10
+        
+        
+        parentForDescriptionView.frame = CGRectMake(self.view.bounds.width / 2 - descriptionWidth / 2, descriptionHeight + tenthOfView + 10, descriptionWidth, descriptionHeight)
+        
+        parentForDescriptionView.backgroundColor = UIColor.clearColor()
+        parentForDescriptionView.layer.cornerRadius = 10
+        parentForDescriptionView.clipsToBounds = true
+        
+        parentForDescriptionView.layer.borderWidth = 1
+        parentForDescriptionView.layer.borderColor = CustomColors.getDescriptionBackgroundColor().CGColor
+
     }
     
     func configureImageView() {
 //        self.view.addSubview(imgItemImage)
-        self.scrollView.addSubview(imgItemImage)
+        self.parentForImageView.addSubview(imgItemImage)
         
         let imageWidth = self.view.bounds.width - 40
         let viewHeight = self.view.bounds.height
         let tenthOfView = viewHeight / 10
         
-        imgItemImage.frame = CGRectMake(self.view.bounds.width / 2 - imageWidth / 2, tenthOfView, imageWidth, imageWidth / 2)
+        imgItemImage.frame = CGRectMake(0, 0, imageWidth, imageWidth / 2) //(self.view.bounds.width / 2 - imageWidth / 2, tenthOfView, imageWidth, imageWidth / 2)
         imgItemImage.imageFromUrl(product.itemImageURL!)
         imgItemImage.layer.cornerRadius = 10
 //        imgItemImage.clipsToBounds = true
@@ -307,6 +333,27 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    func configureParentForImageView() {
+        self.scrollView.addSubview(parentForImageView)
+        
+        let imageWidth = self.view.bounds.width - 40
+        let viewHeight = self.view.bounds.height
+        let tenthOfView = viewHeight / 10
+        
+        parentForImageView.backgroundColor = CustomColors.getDescriptionBackgroundColor()
+        
+        parentForImageView.frame = CGRectMake(self.view.bounds.width / 2 - imageWidth / 2, tenthOfView, imageWidth, imageWidth / 2)
+        parentForImageView.layer.cornerRadius = 10
+        parentForImageView.layer.shadowColor = UIColor.blackColor().CGColor
+        parentForImageView.layer.shadowRadius = 4
+//        imgItemImage.layer.shadowOffset = CGSizeZero
+        parentForImageView.layer.shadowOpacity = 1
+        parentForImageView.layer.shouldRasterize = true
+        parentForImageView.layer.masksToBounds = false
+        parentForImageView.clipsToBounds = false
+        parentForImageView.layer.shadowPath = UIBezierPath(rect: parentForImageView.bounds).CGPath
+    }
+    
     func configureDiscountPriceLabel() {
 //        self.view.addSubview(lblDiscountPrice)
         self.scrollView.addSubview(lblDiscountPrice)
@@ -315,7 +362,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         let imageViewWidth = self.view.bounds.width - 40
         let imageViewHeight = (self.view.bounds.width - 40) / 2
         
-        lblDiscountPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2, imageViewHeight * 2 + tenthOfView + 10, 200, 50)
+        lblDiscountPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2 + 10, imageViewHeight * 2 + tenthOfView + 10, 200, 50)
         lblDiscountPrice.text = "Discount Price: $\(product.discountPrice!)"
         lblDiscountPrice.textAlignment = NSTextAlignment.Left
         lblDiscountPrice.font = UIFont(name: "Helvetica Neue", size: 17)
@@ -332,7 +379,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         let imageViewHeight = (self.view.bounds.width - 40) / 2
         
         
-        lblRetailPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2, imageViewHeight * 2 + tenthOfView + 60, 200, 50)
+        lblRetailPrice.frame = CGRectMake(self.view.bounds.width / 2 - imageViewWidth / 2 + 10, imageViewHeight * 2 + tenthOfView + 60, 200, 50)
         lblRetailPrice.text = "Retail Price: $\(product.retailPrice!)"
         lblRetailPrice.textAlignment = NSTextAlignment.Left
         lblRetailPrice.font = UIFont(name: "Helvetica Neue", size: 17)
@@ -522,7 +569,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         self.view.backgroundColor = UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         
         let customGrayColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1)
-        lblDescription.backgroundColor = customGrayColor
+        lblDescription.backgroundColor = UIColor.clearColor()
         lblTitle.textColor = UIColor(red: 28/255, green: 28/255, blue: 28/255, alpha: 1)
         lblDescription.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         lblRetailPrice.textColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
