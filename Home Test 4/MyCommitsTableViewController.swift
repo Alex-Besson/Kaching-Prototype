@@ -24,6 +24,7 @@ class MyCommitsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = CustomColors.getNavBarColor()
         self.navigationController?.navigationBar.backgroundColor = CustomColors.getNavBarColor()
+        navigationController?.navigationBar.tintColor = CustomColors.getButtonColor()
         
 //        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 10)!]
 //        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: CustomColors.getButtonColor()]
