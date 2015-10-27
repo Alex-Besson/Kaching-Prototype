@@ -44,5 +44,13 @@ class CustomColors {
     class func getButtonColor() -> UIColor {
         return UIColor(red: 242/255, green: 227/255, blue: 148/255, alpha: 1)
     }
+    
+    class func getPBarBackgroundColor() -> UIColor {
+        return UIColor(red: 250/255, green: 139/255, blue: 154/255, alpha: 1)
+    }
+    
+    class func getPBarFillColor() -> UIColor {
+        return UIColor(red: 76/255, green: 164/255, blue: 81/255, alpha: 1)
+    }
 
 }

@@ -95,67 +95,7 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
-        let testPath = UIBezierPath()
-        testPath.moveToPoint(CGPointMake(294.79 / 18, 552.79 / 18))
-        testPath.addCurveToPoint(CGPointMake(218.36 / 18, 485.91 / 18), controlPoint1: CGPointMake(281.02 / 18, 537.35 / 18), controlPoint2: CGPointMake(246.62 / 18, 507.26 / 18))
-        testPath.addCurveToPoint(CGPointMake(89.21 / 18, 382.21 / 18), controlPoint1: CGPointMake(134.61 / 18, 422.67 / 18), controlPoint2: CGPointMake(123.22 / 18, 413.52 / 18))
-        testPath.addCurveToPoint(CGPointMake(0 / 18, 187.87 / 18), controlPoint1: CGPointMake(26.53 / 18, 324.49 / 18), controlPoint2: CGPointMake(-0.09 / 18, 266.51 / 18))
-        testPath.addCurveToPoint(CGPointMake(13.41 / 18, 112.07 / 18), controlPoint1: CGPointMake(0.04 / 18, 149.49 / 18), controlPoint2: CGPointMake(2.66 / 18, 134.71 / 18))
-        testPath.addCurveToPoint(CGPointMake(92.86 / 18, 27.72 / 18), controlPoint1: CGPointMake(31.65 / 18, 73.69 / 18), controlPoint2: CGPointMake(58.51 / 18, 45.16 / 18))
-        testPath.addCurveToPoint(CGPointMake(169.8 / 18, 9.65 / 18), controlPoint1: CGPointMake(117.18 / 18, 15.36 / 18), controlPoint2: CGPointMake(129.18 / 18, 9.87 / 18))
-        testPath.addCurveToPoint(CGPointMake(246.23 / 18, 28.1 / 18), controlPoint1: CGPointMake(212.29 / 18, 9.41 / 18), controlPoint2: CGPointMake(221.24 / 18, 14.37 / 18))
-        testPath.addCurveToPoint(CGPointMake(314.45 / 18, 105.91 / 18), controlPoint1: CGPointMake(276.66 / 18, 44.81 / 18), controlPoint2: CGPointMake(307.97 / 18, 80.54 / 18))
-        testPath.addLineToPoint(CGPointMake(318.45 / 18, 121.58 / 18))
-        testPath.addLineToPoint(CGPointMake(328.31 / 18, 100 / 18))
-        testPath.addCurveToPoint(CGPointMake(623.81 / 18, 103.03 / 18), controlPoint1: CGPointMake(384.02 / 18, -21.97 / 18), controlPoint2: CGPointMake(561.9 / 18, -20.15 / 18))
-        testPath.addCurveToPoint(CGPointMake(628.19 / 18, 272.54 / 18), controlPoint1: CGPointMake(643.45 / 18, 142.11 / 18), controlPoint2: CGPointMake(645.6 / 18, 225.54 / 18))
-        testPath.addCurveToPoint(CGPointMake(464.18 / 18, 452.22 / 18), controlPoint1: CGPointMake(605.47 / 18, 333.85 / 18), controlPoint2: CGPointMake(562.81 / 18, 380.59 / 18))
-        testPath.addCurveToPoint(CGPointMake(321.2 / 18, 580.25 / 18), controlPoint1: CGPointMake(399.5 / 18, 499.19 / 18), controlPoint2: CGPointMake(326.3 / 18, 570.27 / 18))
-        testPath.addCurveToPoint(CGPointMake(294.79 / 18, 552.79 / 18), controlPoint1: CGPointMake(315.29 / 18, 591.84 / 18), controlPoint2: CGPointMake(320.92 / 18, 582.06 / 18))        //        testPath.
         
-//        let fillColor = UIColor.redColor()
-//        fillColor.setFill()
-//        fillColor.setStroke()
-//
-//        testPath.fill()
-//        testPath.stroke()
-        
-        
-        
-        
-        
-        
-        
-        shapeLayer.path = testPath.CGPath
-        shapeLayer.backgroundColor = CustomColors.getNavBarColor().CGColor
-        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
-        shapeLayer.lineWidth = 2
-//        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
-        shapeLayer.strokeColor = CustomColors.getViewBackgroundColor().CGColor
-
-        
-//        let testView = UIView()
-//        self.view.addSubview(testView)
-//        testView.frame = CGRectMake(self.view.bounds.width - 120, self.view.bounds.height / 10, 100, 100)
-//        testView.layer.addSublayer(shapeLayer)
-        
-        
-        let rightButton: UIButton = UIButton() //(UIButtonType.Custom)
-        rightButton.frame = CGRectMake(0, 0, 40, 40)
-//        rightButton.
-//        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
-        rightButton.layer.addSublayer(shapeLayer)
-        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
-        
-        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
-        
-//        let barButton = UIBarButtonItem()
-//        barButton.image = imgItemImage.image
-//        
-//        navigationController?.navigationItem.rightBarButtonItem = barButton
-//        navigationController?.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
     }
     
@@ -222,6 +162,69 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         
         configureElementColors()
         
+        
+        let testPath = UIBezierPath()
+        testPath.moveToPoint(CGPointMake(294.79 / 18, 552.79 / 18))
+        testPath.addCurveToPoint(CGPointMake(218.36 / 18, 485.91 / 18), controlPoint1: CGPointMake(281.02 / 18, 537.35 / 18), controlPoint2: CGPointMake(246.62 / 18, 507.26 / 18))
+        testPath.addCurveToPoint(CGPointMake(89.21 / 18, 382.21 / 18), controlPoint1: CGPointMake(134.61 / 18, 422.67 / 18), controlPoint2: CGPointMake(123.22 / 18, 413.52 / 18))
+        testPath.addCurveToPoint(CGPointMake(0 / 18, 187.87 / 18), controlPoint1: CGPointMake(26.53 / 18, 324.49 / 18), controlPoint2: CGPointMake(-0.09 / 18, 266.51 / 18))
+        testPath.addCurveToPoint(CGPointMake(13.41 / 18, 112.07 / 18), controlPoint1: CGPointMake(0.04 / 18, 149.49 / 18), controlPoint2: CGPointMake(2.66 / 18, 134.71 / 18))
+        testPath.addCurveToPoint(CGPointMake(92.86 / 18, 27.72 / 18), controlPoint1: CGPointMake(31.65 / 18, 73.69 / 18), controlPoint2: CGPointMake(58.51 / 18, 45.16 / 18))
+        testPath.addCurveToPoint(CGPointMake(169.8 / 18, 9.65 / 18), controlPoint1: CGPointMake(117.18 / 18, 15.36 / 18), controlPoint2: CGPointMake(129.18 / 18, 9.87 / 18))
+        testPath.addCurveToPoint(CGPointMake(246.23 / 18, 28.1 / 18), controlPoint1: CGPointMake(212.29 / 18, 9.41 / 18), controlPoint2: CGPointMake(221.24 / 18, 14.37 / 18))
+        testPath.addCurveToPoint(CGPointMake(314.45 / 18, 105.91 / 18), controlPoint1: CGPointMake(276.66 / 18, 44.81 / 18), controlPoint2: CGPointMake(307.97 / 18, 80.54 / 18))
+        testPath.addLineToPoint(CGPointMake(318.45 / 18, 121.58 / 18))
+        testPath.addLineToPoint(CGPointMake(328.31 / 18, 100 / 18))
+        testPath.addCurveToPoint(CGPointMake(623.81 / 18, 103.03 / 18), controlPoint1: CGPointMake(384.02 / 18, -21.97 / 18), controlPoint2: CGPointMake(561.9 / 18, -20.15 / 18))
+        testPath.addCurveToPoint(CGPointMake(628.19 / 18, 272.54 / 18), controlPoint1: CGPointMake(643.45 / 18, 142.11 / 18), controlPoint2: CGPointMake(645.6 / 18, 225.54 / 18))
+        testPath.addCurveToPoint(CGPointMake(464.18 / 18, 452.22 / 18), controlPoint1: CGPointMake(605.47 / 18, 333.85 / 18), controlPoint2: CGPointMake(562.81 / 18, 380.59 / 18))
+        testPath.addCurveToPoint(CGPointMake(321.2 / 18, 580.25 / 18), controlPoint1: CGPointMake(399.5 / 18, 499.19 / 18), controlPoint2: CGPointMake(326.3 / 18, 570.27 / 18))
+        testPath.addCurveToPoint(CGPointMake(294.79 / 18, 552.79 / 18), controlPoint1: CGPointMake(315.29 / 18, 591.84 / 18), controlPoint2: CGPointMake(320.92 / 18, 582.06 / 18))        //        testPath.
+        
+        //        let fillColor = UIColor.redColor()
+        //        fillColor.setFill()
+        //        fillColor.setStroke()
+        //
+        //        testPath.fill()
+        //        testPath.stroke()
+        
+        
+        
+        
+        
+        
+        
+        shapeLayer.path = testPath.CGPath
+        shapeLayer.backgroundColor = CustomColors.getNavBarColor().CGColor
+        //        shapeLayer.strokeColor = CustomColors.getButtonColor().CGColor
+        shapeLayer.lineWidth = 2
+        //        shapeLayer.fillColor = CustomColors.getNavBarColor().CGColor
+        shapeLayer.strokeColor = CustomColors.getViewBackgroundColor().CGColor
+        
+        
+        //        let testView = UIView()
+        //        self.view.addSubview(testView)
+        //        testView.frame = CGRectMake(self.view.bounds.width - 120, self.view.bounds.height / 10, 100, 100)
+        //        testView.layer.addSublayer(shapeLayer)
+        
+        
+        let rightButton: UIButton = UIButton() //(UIButtonType.Custom)
+        rightButton.frame = CGRectMake(0, 0, 40, 40)
+        //        rightButton.
+        //        rightButton.setImage(UIImage(named:"SignIn.jpg"), forState: UIControlState.Normal)
+        rightButton.layer.addSublayer(shapeLayer)
+        rightButton.addTarget(self, action: "rightNavButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let rightBarButtonItem: UIBarButtonItem = UIBarButtonItem(customView: rightButton)
+        
+        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
+        navigationController?.navigationItem.leftBarButtonItem?.tintColor = CustomColors.getButtonColor()
+        
+        //        let barButton = UIBarButtonItem()
+        //        barButton.image = imgItemImage.image
+        //
+        //        navigationController?.navigationItem.rightBarButtonItem = barButton
+        //        navigationController?.navigationItem.setRightBarButtonItem(barButton, animated: true)
     }
     
     
@@ -400,13 +403,13 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         btnCommit.frame = CGRectMake(self.view.bounds.width - 99, imageViewHeight * 2 + tenthOfView + 20, 80, 30)
         btnCommit.setTitle("Commit!", forState: UIControlState.Normal)
         btnCommit.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
-        btnCommit.setTitleColor(UIColor.greenColor(), forState: UIControlState.Normal)
+        btnCommit.setTitleColor(CustomColors.getPBarFillColor(), forState: UIControlState.Normal)
         btnCommit.backgroundColor = CustomColors.getViewBackgroundColor()
-        btnCommit.layer.borderColor = UIColor.greenColor().CGColor
+        btnCommit.layer.borderColor = CustomColors.getPBarFillColor().CGColor
         btnCommit.layer.borderWidth = 1.0
         btnCommit.layer.cornerRadius = 8.0
-        btnCommit.setTitleColor(UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1), forState: UIControlState.Highlighted)
-        
+        btnCommit.setTitleColor(CustomColors.getPBarFillColor(), forState: UIControlState.Highlighted)
+//        UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
         
         btnCommit.addTarget(self, action: "effectPBar:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -464,14 +467,14 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         btnBuyNow.frame = CGRectMake(self.view.bounds.width - 99, imageViewHeight * 2 + tenthOfView + 60, 80, 30)
         btnBuyNow.setTitle("Buy Now!", forState: UIControlState.Normal)
         btnBuyNow.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
-        btnBuyNow.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        btnBuyNow.setTitleColor(CustomColors.getPBarBackgroundColor(), forState: UIControlState.Normal)
         btnBuyNow.backgroundColor = CustomColors.getViewBackgroundColor()
-        btnBuyNow.layer.borderColor = UIColor.redColor().CGColor
+        btnBuyNow.layer.borderColor = CustomColors.getPBarBackgroundColor().CGColor
         btnBuyNow.layer.borderWidth = 1.0
         btnBuyNow.layer.cornerRadius = 8.0
         
-        btnBuyNow.setTitleColor(UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1), forState: .Highlighted)
-        
+        btnBuyNow.setTitleColor(CustomColors.getViewBackgroundColor(), forState: .Highlighted)
+//        UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
        
         
     }
@@ -529,6 +532,10 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         pBarCommitProgress.frame = CGRectMake(self.view.bounds.width / 2 - 167, imageViewHeight * 3 + tenthOfView, 330, 100)
        
         self.pBarCommitProgress.transform = CGAffineTransformScale(self.pBarCommitProgress.transform, 1, 5)
+        
+        pBarCommitProgress.trackTintColor = CustomColors.getPBarBackgroundColor()
+        pBarCommitProgress.tintColor = CustomColors.getPBarFillColor()
+        pBarCommitProgress.layer.cornerRadius = 100
     
     }
     
@@ -539,14 +546,14 @@ class TemporaryDetailViewController: UIViewController, UIScrollViewDelegate {
         btnImOut.frame = CGRectMake(self.view.bounds.width / 2 - 35, 520, 70, 30)
         btnImOut.setTitle("I'm Out", forState: UIControlState.Normal)
         btnImOut.titleLabel?.font = UIFont(name: "Helvetica Neue", size: 16)
-        btnImOut.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        btnImOut.setTitleColor(CustomColors.getPBarBackgroundColor(), forState: UIControlState.Normal)
         btnImOut.backgroundColor = CustomColors.getViewBackgroundColor()
-        btnImOut.layer.borderColor = UIColor.redColor().CGColor
+        btnImOut.layer.borderColor = CustomColors.getPBarBackgroundColor().CGColor
         btnImOut.layer.borderWidth = 1.0
         btnImOut.layer.cornerRadius = 8.0
-        btnImOut.setTitleColor(UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1), forState: .Highlighted)
+        btnImOut.setTitleColor(CustomColors.getViewBackgroundColor(), forState: .Highlighted)
         btnImOut.addTarget(self, action: "clearPBar:", forControlEvents: UIControlEvents.TouchUpInside)
-
+//        UIColor(red: 246/255, green: 247/255, blue: 248/255, alpha: 1)
     }
     
     func clearPBar(sender:UIButton!) {
